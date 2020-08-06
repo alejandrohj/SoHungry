@@ -70,15 +70,8 @@ This app will enable restaurants to upload their menus and receive bookings and 
 - POST /user/order/:RestId
   - redirects to /myorders
   - body: {
-    []
+    [{dishId, quantity},..]
   }
-   - order:
-    - dish1
-     - name
-      - price
-      - quantity
-    - dish2
-      ...
    - status
 
 - GET /user/booking/:RestId
@@ -86,14 +79,14 @@ This app will enable restaurants to upload their menus and receive bookings and 
 
 - POST /user/booking/:RestId
   - redirects to /user
-  - body:
-   - userId
-   - date
-   - people
+  - body:{
+    - userId
+    - date
+    - people
+  }
 
 - GET /user/myorders
   - renders myorders.hbs
-
 
 - GET /user/mybookings
   - renders mybookings.hbs
@@ -109,30 +102,33 @@ This app will enable restaurants to upload their menus and receive bookings and 
 
 - POST /business
   - redirects to /business
-  - body:
-   - username
-   - category
-   - capacity
-   - location
+  - body:{
+    - username
+    - category
+    - capacity
+    - location
     - city
     - address
     - logourl
-
+  }
+   
 - GET /business/menu
   - renders menu.hbs
 
 - POST /business/menu/add
   - redirects to /business/menu
-  - body:
-   - name
-   - price
+  - body: {
+    - name
+    - price
+  }
 
 - POST /business/menu/save
   - redirects to /business/menu
-  - body:
-   - dishId
-   - name
-   - price
+  - body:{
+    - dishId
+    - name
+    - price
+  }
 
 -POST /business/menu/delete
   - redirects to /business/menu
@@ -150,12 +146,12 @@ This app will enable restaurants to upload their menus and receive bookings and 
 
 ## Models
   - Customer Schema
-    - userName (String, required, unique)
+    - userName (String, required)
     - email (String, required, unique)
     - passwordHash (String, required)
   
   - Business Schema
-    - userName (String, required, unique)
+    - userName (String, required)
     - email (String, required, unique)
     - passwordHash (String, required)
     - logo (string)
@@ -169,15 +165,9 @@ This app will enable restaurants to upload their menus and receive bookings and 
   - Order Schema
     - user (String, ref)
     - business (String, ref)
-    - order:
-     - dish1
-      - name (String)
-      - price (number)
-      - quantity (number)
-      ...
-      - dish10
-       - name (String)
-       - price (number)
+    - order: {
+      [{dishId, quantity}]
+    }
        - quantity (number)
        - status(String, required, enum [done, pending])
 
