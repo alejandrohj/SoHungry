@@ -31,19 +31,22 @@ This app will enable restaurants to upload their menus and receive bookings and 
 
 - POST /signup
   - redirect to /
-  - body:
-   - username
-   - email
-   - password
-   - usertype
+  - body: {
+    - username
+    - email
+    - password
+    - usertype
+  }
+   
 - POST /login
   - redirect to /user if logged in as client
   - redirect to /business if logged in as business
-  - body:
-   - email
-   - password
-   - usertype
-
+  - body: {
+    - email
+    - password
+    - usertype
+  }
+  
 - POST /logout
   - redirects to /
   - body: (empty)
@@ -54,17 +57,21 @@ This app will enable restaurants to upload their menus and receive bookings and 
   - renders search.hbs
 
 - POST /search
-  - body:
-   - name
-   - location.city
-   - cuisine
+  - body: {
+    - name
+    - location.city
+    - cuisine
+  }
+   
 
 - GET /user/order/:RestId
   - render order.hbs
 
 - POST /user/order/:RestId
   - redirects to /myorders
-  - body:
+  - body: {
+    []
+  }
    - order:
     - dish1
      - name
@@ -152,18 +159,12 @@ This app will enable restaurants to upload their menus and receive bookings and 
     - email (String, required, unique)
     - passwordHash (String, required)
     - logo (string)
-    - location
-     - city (string)
-     - address (string)
+    - location: {
+      - city (string)
+      - address (string)
+    }
     - cuisine
-    - menu
-     - dish1
-      - name (String)
-      - price (number)
-      ...
-      - dish10
-       - name (String)
-       - price (number)
+    - menu[dishId]
 
   - Order Schema
     - user (String, ref)
@@ -185,6 +186,10 @@ This app will enable restaurants to upload their menus and receive bookings and 
     - business (String, ref)
     - date (Date, required)
     - people (Number, required)
+
+  - Dish Schema
+    - name
+    - price
     
 
 ## Links
