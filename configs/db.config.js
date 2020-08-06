@@ -12,3 +12,4 @@ mongoose
     console.error(`An error ocurred trying to connect to the database ${MONGODB_URI}: `, error);
     process.exit(1);
   });
+  
