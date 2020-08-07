@@ -25,7 +25,7 @@ router.post('/', (req, res)=>{
     let {userName, cuisine, capacity, description, city, address, logo, email} = req.body
     let RestaurantID = req.session.loggedInUser._id
     console.log (cuisine)
-    BusinessModel.findByIdAndUpdate(RestaurantID, {$set: {userName, cuisine, capacity, description, location, logo, email}})
+    BusinessModel.findByIdAndUpdate(RestaurantID, {$set: {userName, cuisine, capacity, description, "location.city": city, "location.address": address, logo, email}})
         .then(()=>redirect('/business'))
         .catch((err)=> console.log ('Could not upload the profile. Error is: ', err))
 })
