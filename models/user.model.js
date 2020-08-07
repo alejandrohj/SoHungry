@@ -32,6 +32,7 @@ let businessSchema = new Schema({
         type: String,
         required: true
     },
+    capacity: Number,
     logo: String,
     location:{
         city: String,
