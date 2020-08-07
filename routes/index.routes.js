@@ -100,7 +100,7 @@ router.post('/login', (req, res) => {
       if (match){
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        console.log (req.session)
+        //console.log (req.session)
         res.redirect('/business')
       }
       else{

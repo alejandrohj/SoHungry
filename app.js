@@ -61,6 +61,7 @@ app.use('/', indexRouter);
 app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
+
 const userRouter = require('./routes/user.routes');
 app.use('/', userRouter);
 const businessRouter = require('./routes/business.routes');

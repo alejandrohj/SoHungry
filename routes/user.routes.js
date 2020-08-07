@@ -13,8 +13,20 @@ router.use((req,res,next) => {
 })
 router.get('/user',(req,res)=>{
     let usertype = req.session.usertype;
-    res.render('user/search.hbs',{usertype});
+    BusinessModel.find()
+        .then((restaurants)=>{
+            console.log(restaurants)
+            res.render('user/search.hbs',{usertype, restaurants});
+        })
+    
 });
 
+router.post('/search',(req,res)=>{
+    const {city, cuisine} = req.body;
+    BusinessModel.find({"location.city": city, cuisine:cuisine})
+        .then((match)=>{
+            console.log(match);
+        });
+});
 
 module.exports = router;
