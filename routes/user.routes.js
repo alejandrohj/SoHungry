@@ -50,6 +50,12 @@ router.post('/search',(req,res)=>{
     }
 });
 
+router.get('/logout',(req,res)=>{
+    req.session.destroy(()=>{
+        res.redirect('/');
+    })
+});
+
 router.get ('/order/:id', (req, res)=>{
     console.log (req.params)
     BusinessModel.findById(req.params.id)

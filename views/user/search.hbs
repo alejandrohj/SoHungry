@@ -1,7 +1,6 @@
 {{> customerNavBar this}}
-
 <div>
-  <form method="POST" action="user/search" class="form-inline" id="searchForm">
+  <form method="POST" action="/user/search" class="form-inline" id="searchForm">
     <div class="form-group col-md-4">
         <label for="inputState">City</label><br>
         <select name="city" id="inputState" class="form-control">
@@ -34,7 +33,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{this.userName}}</h5>
                         <p class="card-text">{{this.cuisine}}</p>
-                        <a href="/user/order/{{this._id}}" class="btn btn-primary">Go somewhere</a>
+                        <a href="/user/order/{{this._id}}" class="btn btn-primary">Order</a>
                     </div>
                 </div>
             {{/each}}
