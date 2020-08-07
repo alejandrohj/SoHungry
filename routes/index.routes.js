@@ -99,7 +99,7 @@ router.post('/login', (req, res) => {
       const match = bcryptjs.compare(password, user.passwordHash)
       if (match){
         req.session.loggedInUser = user;
-        req.session.usertype = {usertype};
+        req.session.usertype = usertype;
         console.log (req.session)
         res.redirect('/business')
       }

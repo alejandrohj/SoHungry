@@ -53,29 +53,17 @@ app.use(session({
 const indexRouter = require('./routes/index.routes');
 app.use('/', indexRouter);
 
+// const userRouter = require('./routes/user.routes');
+// const businessRouter = require('./routes/business.routes');
+
 //Private routes
 /*Rest to privaticed each (business and customer) one of the other*/
 app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
-//app.use((req,res,next)=>{
-  //console.log(req.session.usertype);
-  //if(req.session.usertype =='customer') {
-    //console.log('userPage');
-    const userRouter = require('./routes/user.routes');
-    app.use('/', userRouter);
-  //}
-  //else if(req.session.usertype =='business') {
-    const businessRouter = require('./routes/business.routes');
-    app.use('/', businessRouter);
-  //}
-//   else{
-//     res.redirect("/")
-//     next();}
-// });
-
-
-
-
+const userRouter = require('./routes/user.routes');
+app.use('/', userRouter);
+const businessRouter = require('./routes/business.routes');
+app.use('/', businessRouter);
 
 module.exports = app;
