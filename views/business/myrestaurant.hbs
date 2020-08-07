@@ -1,9 +1,32 @@
 {{> restaurantNavBar this}}
-
+<form action="business" method="POST">
 <section>
+    <img src="{{restaurant.logo}}" alt="logo">
     <article>
         <h4>Basic Info</h4>
         <label for="userName">Name</label>
-        <input type="text" name='userName' id='userName' value=''>
+        <input type="text" name='userName' id='userName' value='{{restaurant.userName}}'>
+        <label for="cuisine">Cuisine</label>
+        <input type="text" name='cuisine' id='cuisine' value='{{restaurant.cuisine}}'>
+        <label for="capacity">Capacity</label>
+        <input type="number" name='capacity' id='capacity' value='{{restaurant.capacity}}'>
+        <label for="description">Description</label>
+        <input type="text" name='description' id='description' value='{{restaurant.description}}'>
+    </article>
+
+    <article>
+        <h4>Insert your logo url</h4>
+        <input type="text" name='logo' id='logo' value='{{restaurant.logo}}'>
+    </article>
+    <article>
+        <h4>Contact information</h4>
+        <label for="city">Name</label>
+        <input type="text" name='city' id='city' value='{{restaurant.location.city}}'>
+        <label for="address">Name</label>
+        <input type="text" name='address' id='address' value='{{restaurant.location.address}}'>
+        <label for="email">Name</label>
+        <input type="email" name='email' id='email' value='{{restaurant.email}}'>
     </article>
 </section>
+<button type="submit">Confirm changes</button>
+</form>
