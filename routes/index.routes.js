@@ -83,7 +83,7 @@ router.post('/login', (req, res) => {
       if (match){
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        res.redirect('/')
+        res.redirect('/user')
       }
       else{
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
@@ -99,9 +99,9 @@ router.post('/login', (req, res) => {
       const match = bcryptjs.compare(password, user.passwordHash)
       if (match){
         req.session.loggedInUser = user;
-        req.session.usertype = usertype;
+        req.session.usertype = {usertype};
         console.log (req.session)
-        res.redirect('/')
+        res.redirect('/business')
       }
       else{
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});

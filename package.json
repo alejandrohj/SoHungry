@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./bin/www",
-    "devw": "set DEBUG=starter-code:* & nodemon ./bin/www"
+    "devw": "set DEBUG=starter-code:* & nodemon ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",

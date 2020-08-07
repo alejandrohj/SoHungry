@@ -18,6 +18,7 @@ const app = express();
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setting up the middleware to let it know where to find the favicon icon
@@ -51,6 +52,30 @@ app.use(session({
 // Routers
 const indexRouter = require('./routes/index.routes');
 app.use('/', indexRouter);
+
+//Private routes
+/*Rest to privaticed each (business and customer) one of the other*/
+app.use((req,res,next)=>{
+  req.session.loggedInUser ? next() : res.redirect("/"); 
+});
+//app.use((req,res,next)=>{
+  //console.log(req.session.usertype);
+  //if(req.session.usertype =='customer') {
+    //console.log('userPage');
+    const userRouter = require('./routes/user.routes');
+    app.use('/', userRouter);
+  //}
+  //else if(req.session.usertype =='business') {
+    const businessRouter = require('./routes/business.routes');
+    app.use('/', businessRouter);
+  //}
+//   else{
+//     res.redirect("/")
+//     next();}
+// });
+
+
+
 
 
 module.exports = app;
