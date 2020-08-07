@@ -168,7 +168,6 @@ This app will enable restaurants to upload their menus and receive bookings and 
     - order: {
       [{dishId, quantity}]
     }
-       - quantity (number)
        - status(String, required, enum [done, pending])
 
   - Bookings Schema
