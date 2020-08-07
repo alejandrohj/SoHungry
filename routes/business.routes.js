@@ -21,5 +21,9 @@ router.get('/',(req,res)=>{
     .catch((err) => console.log ('Could not find restaurant. Error: ', err))
 });
 
+router.get('/menu',(req,res)=>{
+    res.render('business/mymenu.hbs');
+});
+
 
 module.exports = router;
