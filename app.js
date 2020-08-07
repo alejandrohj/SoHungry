@@ -39,14 +39,14 @@ const MongoStore = require('connect-mongo')(session);
 app.use(session({
   secret: 'so-hungry',
   cookie: {
-    maxAge: 60*60*24*1000*7 // 1day
+    maxAge: 60*60*24*1000*7 // 1week
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 60*60*24*7 // 1 week
+  
   })
 }));
-
 
 // Routers
 const indexRouter = require('./routes/index.routes');

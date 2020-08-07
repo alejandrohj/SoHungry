@@ -1,17 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-
 const {CustomerModel, BusinessModel} = require('../models/user.model');
 
 
 router.get('/', (req, res) => {
     res.render('login.hbs')
-});
-
-router.post('/', (req, res) =>{
-    console.log (req.body);
-    res.redirect('/');
 });
 
 router.get('/signup', (req, res) => {
@@ -67,8 +61,7 @@ router.post('/signup', (req, res) =>{
     }
 })
 
-
-router.post('/signin', (req, res) => {
+router.post('/login', (req, res) => {
   const { userName, password, usertype} = req.body
 
   if( !userName || !password){
@@ -82,20 +75,41 @@ router.post('/signin', (req, res) => {
     return;
   }
 
-  CustomerModel.findOne({userName: userName})
+  if(usertype==='customer'){
+
+   CustomerModel.findOne({userName: userName})
     .then((user)=>{
       const match = bcryptjs.compare(password, user.passwordHash)
       if (match){
         req.session.loggedInUser = user;
-        res.redirect('/profile')
+        req.session.usertype = usertype;
+        res.redirect('/')
       }
       else{
-        res.status(500).render('auth/signin.hbs', {errorMessage: 'Password does not match.'});
+        res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
+      }
+    })
+    .catch((err)=>console.log('Error is: ', err))
+  }
+    
+  if(usertype==='business'){
+
+   BusinessModel.findOne({userName: userName})
+    .then((user)=>{
+      const match = bcryptjs.compare(password, user.passwordHash)
+      if (match){
+        req.session.loggedInUser = user;
+        req.session.usertype = usertype;
+        console.log (req.session)
+        res.redirect('/')
+      }
+      else{
+        res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
       }
       })
     .catch((err)=>console.log('Error is: ', err))
-
-    res.redirect('/');
-});
-
+      res.redirect('/');
+    }
+}
+)
 module.exports = router;
