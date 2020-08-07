@@ -1,7 +1,7 @@
 <form action="/" method="post">
 
-<label for="name">Name</label>
-<input type="text" name='name' id= 'name' placeholder='Please enter your name'>
+<label for="userName">Name</label>
+<input type="text" name='userName' id= 'userName' placeholder='Please enter your name'>
 
 <label for="password">Password</label>
 <input type="password" name='password' id= 'password' placeholder='Please enter your password'>
@@ -14,5 +14,10 @@
 
 <button type="submit">Log in</button>
 </form>
+
+
+{{#if errorMessage}}
+<div>{{errorMessage}}</div>
+{{/if}}
 
 <a href="/signup">Register now</a>

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./bin/www",
-    "dev": "set DEBUG=starter-code:* & nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "devw": "set DEBUG=starter-code:* & nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
