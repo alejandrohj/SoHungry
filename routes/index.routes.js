@@ -70,6 +70,7 @@ router.post('/login', (req, res) => {
   }
 
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
+
   if (!passReg.test(password)){
     res.status(500).render('login.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
     return;
@@ -92,24 +93,23 @@ router.post('/login', (req, res) => {
     .catch((err)=>console.log('Error is: ', err))
   }
     
-  if(usertype==='business'){
+  if(usertype==='customer'){
 
    BusinessModel.findOne({userName: userName})
     .then((user)=>{
       const match = bcryptjs.compare(password, user.passwordHash)
       if (match){
+        console.log ('Password matches')
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        // console.log (req.session)
         res.redirect('/business')
       }
       else{
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
       }
-      })
+    })
     .catch((err)=>console.log('Error is: ', err))
-      res.redirect('/');
-    }
+  }
 }
 )
 module.exports = router;

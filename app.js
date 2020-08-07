@@ -52,32 +52,19 @@ app.use(session({
 // Routers
 const indexRouter = require('./routes/index.routes');
 app.use('/', indexRouter);
-const businessRouter = require('./routes/business.routes');
-app.use('/', businessRouter);
-const userRouter = require('./routes/user.routes');
-app.use('/', userRouter);
+
+
+// const userRouter = require('./routes/user.routes');
+// const businessRouter = require('./routes/business.routes');
 
 //Private routes
 /*Rest to privaticed each (business and customer) one of the other*/
 app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
-//app.use((req,res,next)=>{
-  //console.log(req.session.usertype);
-  //if(req.session.usertype =='customer') {
-    //console.log('userPage');
-
-  //}
-  //else if(req.session.usertype =='business') {
-
-  //}
-//   else{
-//     res.redirect("/")
-//     next();}
-// });
-
-
-
-
+const businessRouter = require('./routes/business.routes');
+app.use('/', businessRouter);
+const userRouter = require('./routes/user.routes');
+app.use('/', userRouter);
 
 module.exports = app;
