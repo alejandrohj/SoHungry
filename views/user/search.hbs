@@ -1,7 +1,7 @@
 {{> customerNavBar this}}
 
 <div>
-  <form method="POST" action="search" class="form-inline" id="searchForm">
+  <form method="POST" action="user/search" class="form-inline" id="searchForm">
     <div class="form-group col-md-4">
         <label for="inputState">City</label><br>
         <select name="city" id="inputState" class="form-control">
@@ -26,7 +26,19 @@
     </div>
     
     </form>
-    {{#if matches}}
-    {{/if}}
+    <div class="searchMatches">
+        {{#if matches}}
+            {{#each matches}}
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{this.logo}}" alt="restaurantimage cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.userName}}</h5>
+                        <p class="card-text">{{this.cuisine}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    </div>
 </div>
 <hr>

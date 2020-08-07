@@ -51,6 +51,8 @@ app.use(session({
 
 // Routers
 const indexRouter = require('./routes/index.routes');
+const userRouter = require('./routes/user.routes');
+const businessRouter = require('./routes/business.routes');
 app.use('/', indexRouter);
 
 // const userRouter = require('./routes/user.routes');
@@ -62,9 +64,8 @@ app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
 
-const userRouter = require('./routes/user.routes');
-app.use('/', userRouter);
-const businessRouter = require('./routes/business.routes');
-app.use('/', businessRouter);
+
+app.use('/user', userRouter);
+app.use('/business', businessRouter);
 
 module.exports = app;
