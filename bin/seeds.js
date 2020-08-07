@@ -4,14 +4,14 @@ const DishModel = require('../models/dish.model');
 const {CustomerModel, BusinessModel} = require('../models/user.model');
 
 
-DishModel.create({name: 'SeaFood Paella', price: 40})
-    .then((dataSeeded)=>{
-        console.log('DataSeeded:',dataSeeded);
-        // connection.close()
-    })
-    .catch((err)=> console.log('Failed to update dishes. Reason: ', err))
+// DishModel.create({name: 'SeaFood Paella', price: 40})
+//     .then((dataSeeded)=>{
+//         console.log('DataSeeded:',dataSeeded);
+//         // connection.close()
+//     })
+//     .catch((err)=> console.log('Failed to update dishes. Reason: ', err))
 
-BusinessModel.insertMany(
+BusinessModel.insertMany([
     {
         userName: 'Izakaya',
         email: 'izakaya@food.com',
@@ -35,7 +35,7 @@ BusinessModel.insertMany(
         logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Cyochin2.jpg/800px-Cyochin2.jpg',
         location: {city: 'Bilbao', address:'somewhere promenade'},
         cuisine: 'Tex-Mex'
-    })
+    }])
         .then((dataSeeded)=>{
             console.log('Connection closed');
             connection.close()
