@@ -50,4 +50,14 @@ router.post('/search',(req,res)=>{
     }
 });
 
+router.get ('/order/:id', (req, res)=>{
+    console.log (req.params)
+    BusinessModel.findById(req.params.id)
+        .then((result)=>{
+            res.render ('user/order.hbs', {result})
+        })
+        .catch(err => console.log('Could not find restaurant. Error is: '+ err))
+
+})
+
 module.exports = router;
