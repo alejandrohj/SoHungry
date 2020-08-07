@@ -24,6 +24,10 @@ let orderSchema = new Schema({
         type: String,
         required: true,
         enum: ['done', 'pending']
+    },
+    description: {
+        type: String,
+        maxlength: 100
     }
 });
 

@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
     .catch((err)=>console.log('Error is: ', err))
   }
     
-  if(usertype==='customer'){
+  if(usertype==='business'){
 
    BusinessModel.findOne({userName: userName})
     .then((user)=>{
@@ -102,6 +102,7 @@ router.post('/login', (req, res) => {
         console.log ('Password matches')
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
+        //console.log (req.session)
         res.redirect('/business')
       }
       else{

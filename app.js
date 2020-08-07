@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 
+
+
 // Used to setthe favicon for our app
 // const favicon = require('serve-favicon');
 
@@ -51,8 +53,9 @@ app.use(session({
 
 // Routers
 const indexRouter = require('./routes/index.routes');
+const userRouter = require('./routes/user.routes');
+const businessRouter = require('./routes/business.routes');
 app.use('/', indexRouter);
-
 
 // const userRouter = require('./routes/user.routes');
 // const businessRouter = require('./routes/business.routes');
@@ -62,9 +65,10 @@ app.use('/', indexRouter);
 app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
-const businessRouter = require('./routes/business.routes');
-app.use('/', businessRouter);
-const userRouter = require('./routes/user.routes');
-app.use('/', userRouter);
+
+app.use('/business', businessRouter);
+app.use('/user', userRouter);
+
+
 
 module.exports = app;
