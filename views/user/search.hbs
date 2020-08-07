@@ -26,7 +26,19 @@
     </div>
     
     </form>
-    {{#if matches}}
-    {{/if}}
+    <div class="searchMatches">
+        {{#if matches}}
+            {{#each matches}}
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{this.logo}}" alt="restaurantimage cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.userName}}</h5>
+                        <p class="card-text">{{this.cuisine}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    </div>
 </div>
 <hr>

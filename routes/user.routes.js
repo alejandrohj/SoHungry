@@ -15,20 +15,39 @@ router.get('/',(req,res)=>{
     let usertype = req.session.usertype;
     BusinessModel.find()
         .then((restaurants)=>{
-            // console.log(restaurants)
-            res.render('user/search.hbs',{usertype, restaurants});
+            let matches;
+            if(req.session.matches) { matches = req.session.matches;}
+            res.render('user/search.hbs',{usertype, restaurants, matches});
         })
     
 });
 
 router.post('/search',(req,res)=>{
     const {city, cuisine} = req.body;
-    BusinessModel.find({"location.city": city, cuisine:cuisine})
-        .then((match)=>{
-            console.log(match);
-            console.log('post works')
-            res.redirect('/user')
-        });
+    if(city !== 'Choose...' && cuisine === 'Choose...'){
+        BusinessModel.find({"location.city": city})
+            .then((matches)=>{
+                req.session.matches = matches;
+                console.log(req.session)
+                res.redirect('/user');
+            });
+    }
+    else if(city === 'Choose...' && cuisine !== 'Choose...'){
+        BusinessModel.find({cuisine:cuisine})
+            .then((matches)=>{
+                req.session.matches = matches;
+                console.log(req.session)
+                res.redirect('/user');
+            });
+    }
+    else {
+        BusinessModel.find({"location.city": city, cuisine:cuisine})
+            .then((matches)=>{
+                req.session.matches = matches;
+                console.log(req.session)
+                res.redirect('/user');
+            });
+    }
 });
 
 module.exports = router;

@@ -66,9 +66,8 @@ app.use((req,res,next)=>{
   req.session.loggedInUser ? next() : res.redirect("/"); 
 });
 
-app.use('/business', businessRouter);
+
 app.use('/user', userRouter);
-
-
+app.use('/business', businessRouter);
 
 module.exports = app;
