@@ -24,9 +24,12 @@ router.get('/',(req,res)=>{
 
 router.get('/menu',(req,res)=>{
     let dishes;
-    if(req.session.loggedInUser) {dishes = req.session.loggedInUser.menu;}
-    console.log(dishes)
-    res.render('business/mymenu.hbs',{dishes});
+    console.log(req.session.loggedInUser._id)
+    BusinessModel.findById({_id:req.session.loggedInUser._id})
+        .populate('menu')
+        .then((restaurantInfo)=>{
+            res.render('business/mymenu.hbs',{restaurantInfo})
+        });
 });
 
 router.get('/logout',(req,res)=>{
@@ -45,19 +48,26 @@ router.post('/', (req, res)=>{
 
 router.post('/addDish',(req,res)=>{
     const {name, price} = req.body;
-    DishModel.create({name: name, price: price})
-        .then(()=>{
-            DishModel.find({name: name, price: price})
-                .then((dishToReference)=>{
-                    let currentDishes = req.session.loggedInUser.menu;
-                    currentDishes.push(dishToReference[0]._id);
-                    BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id,{menu: currentDishes})
-                        .then((dishAdded)=>{
-                            console.log('Dish added: ',dishAdded)
-                                res.redirect('/business/menu');
+    const reg = new RegExp('^[0-9]+(\.\[0-9]{1,2})?$');
+    console.log('price',price)
+    if(!reg.test(price)) {
+        res.status(500).render('business/menu.hbs', {errorMessage: 'Please enter a valid price: ..000.00'})
+        return;
+    }
+    else{
+        DishModel.create({name: name, price: price}) //We create the new dish
+        .then((dishToReference)=>{
+            BusinessModel.findById(req.session.loggedInUser._id) //Show the logged restaurant
+                .then((currentBusiness)=>{
+                    let currentDishes = currentBusiness.menu; //And extract the current dishes
+                    currentDishes.push(dishToReference._id); //Then we add the new dish to the current dishes arr
+                    BusinessModel.findOneAndUpdate({_id:currentBusiness._id},{$set:{menu: currentDishes}})
+                        .then(()=>{
+                            res.redirect('/business/menu')
                         })
-                });
-        });
+                }); 
+            });
+    }
 });
 
 
