@@ -58,9 +58,10 @@ router.get('/logout',(req,res)=>{
 
 router.get ('/order/:id', (req, res)=>{
     console.log (req.params)
-    BusinessModel.findById(req.params.id)
+    BusinessModel.findById(req.params.id).populate('menu')
         .then((result)=>{
-            res.render ('user/order.hbs', {result})
+            console.log(result)
+            res.render ('user/order.hbs', {dish: result.menu})
         })
         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
 

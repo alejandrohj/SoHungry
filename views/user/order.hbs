@@ -1,2 +1,9 @@
 {{> customerNavBar this}}
 
+<h1>Your order</h1>
+
+{{#each dish}}
+
+{{> orderitem this}}
+
+{{/each}}
