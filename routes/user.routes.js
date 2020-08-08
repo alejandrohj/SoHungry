@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const {CustomerModel, BusinessModel} = require('../models/user.model');
+const OrderModel = require('../models/order.model');
 
 router.use((req,res,next) => {
     if(req.session.usertype == 'customer'){
@@ -67,13 +68,17 @@ router.get ('/order/:id', (req, res)=>{
 })
 
 router.post ('/order/:id', (req, res)=>{
-    // BusinessModel.findById(req.params.id).populate('menu')
-    //     .then((result)=>{
-    //         console.log(result)
-            res.redirect ('/user')
-        })
-//         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
+    let idArr = Object.keys(req.body);
+    let quantArr = Object.values(req.body);
+    const order = idArr.map((element, index)=>({'dishId': element, 'quantity': quantArr[index]}));
+    OrderModel.create({user: req.session.loggedInUser._id, business: req.params.id, order, status: 'pending'})
+        .then(()=>res.redirect ('/user/myorders'))
+        .catch(err => console.log('Could not create order. Error is: '+ err))
+})
 
-// })
+router.get('/myorders', (req, res)=>{
+    res.render('user/myorders.hbs')
+
+})
 
 module.exports = router;

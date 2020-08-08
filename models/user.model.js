@@ -46,7 +46,11 @@ let businessSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'dish'
-        }]
+        }],
+    description: {
+        type: String,
+        maxlength: 100
+    }
 
 })
 
