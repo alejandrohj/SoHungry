@@ -1,5 +1,5 @@
 {{> customerNavBar this}}
-
+<form action="/user/order/{{id}}" method="post">
 <h1>Your order</h1>
 
 {{#each dish}}
@@ -7,3 +7,11 @@
 {{> orderitem this}}
 
 {{/each}}
+
+<div id="order-total">Total: <span>0</span>€</div>
+
+<button>Place order</button>
+
+
+<script src="/javascripts/order.js"></script>
+</form>
