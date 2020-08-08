@@ -27,7 +27,7 @@ router.post('/signup', (req, res) =>{
       return;
     }
 
-    const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
+    const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,15}$/) //Password of 6 to 15 characters
     if (!passReg.test(password)){
       res.status(500).render('signup.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
       return;
