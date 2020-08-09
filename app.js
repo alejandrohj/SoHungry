@@ -11,6 +11,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false); //It is to avoid some mongoose functions deprecation
 
 // Database connection
 require('./configs/db.config');

@@ -29,11 +29,8 @@ function handleClick(event) {
 
     var element = event.target;
 
-    // Climb up the document tree from the target of the event
     while (element) {
         if (element.nodeName === "INPUT" && /update/.test(element.className)) {
-            // The user clicked on a <button> or clicked on an element inside a <button>
-            // with a class name called "foo"
             calculateAll(element);
             break;
         }

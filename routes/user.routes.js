@@ -29,7 +29,6 @@ router.post('/search',(req,res)=>{
         BusinessModel.find({"location.city": city})
             .then((matches)=>{
                 req.session.matches = matches;
-                console.log(req.session)
                 res.redirect('/user');
             });
     }
@@ -37,7 +36,6 @@ router.post('/search',(req,res)=>{
         BusinessModel.find({cuisine:cuisine})
             .then((matches)=>{
                 req.session.matches = matches;
-                console.log(req.session)
                 res.redirect('/user');
             });
     }
@@ -45,7 +43,6 @@ router.post('/search',(req,res)=>{
         BusinessModel.find({"location.city": city, cuisine:cuisine})
             .then((matches)=>{
                 req.session.matches = matches;
-                console.log(req.session)
                 res.redirect('/user');
             });
     }
@@ -60,7 +57,6 @@ router.get('/logout',(req,res)=>{
 router.get ('/order/:id', (req, res)=>{
     BusinessModel.findById(req.params.id).populate('menu')
         .then((result)=>{
-            console.log(result)
             res.render ('user/order.hbs', {dish: result.menu, id: result._id})
         })
         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
@@ -77,7 +73,12 @@ router.post ('/order/:id', (req, res)=>{
 })
 
 router.get('/myorders', (req, res)=>{
-    res.render('user/myorders.hbs')
+    OrderModel.find({user: req.session.loggedInUser._id}).populate('business').populate('order.dishId')
+        .then((orders)=>{
+            res.render('user/myorders.hbs', {orders})
+        })
+        .catch(err => console.log('Could get orders. Error is: '+ err))
+
 
 })
 

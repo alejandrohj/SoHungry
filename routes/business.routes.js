@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-const {CustomerModel, BusinessModel} = require('../models/user.model');
+const { BusinessModel } = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 
 
@@ -23,8 +23,6 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/menu',(req,res)=>{
-    let dishes;
-    console.log(req.session.loggedInUser._id)
     BusinessModel.findById({_id:req.session.loggedInUser._id})
         .populate('menu')
         .then((restaurantInfo)=>{
@@ -40,8 +38,7 @@ router.get('/logout',(req,res)=>{
 router.post('/', (req, res)=>{
     let {userName, cuisine, capacity, description, city, address, logo, email} = req.body
     let RestaurantID = req.session.loggedInUser._id
-    console.log (cuisine)
-    BusinessModel.findByIdAndUpdate(RestaurantID, {$set: {userName, cuisine, capacity, description, "location.city": city, "location.address": address, logo, email}})
+    BusinessModel.findByIdAndUpdate(RestaurantID, {$set: {userName, cuisine, capacity, description, 'location.city':city, 'location.address':address, logo, email}})
         .then(()=>res.redirect('/business'))
         .catch((err)=> console.log ('Could not upload the profile. Error is: ', err))
 });
@@ -49,7 +46,6 @@ router.post('/', (req, res)=>{
 router.post('/addDish',(req,res)=>{
     const {name, price} = req.body;
     const reg = new RegExp('^[0-9]+(\.\[0-9]{1,2})?$');
-    console.log('price',price)
     if(!reg.test(price)) {
         res.status(500).render('business/menu.hbs', {errorMessage: 'Please enter a valid price: ..000.00'})
         return;
@@ -70,6 +66,13 @@ router.post('/addDish',(req,res)=>{
     }
 });
 
-
+router.post('/editDish/:id',(req,res)=>{
+    const {name, price} = req.body;
+    const dishId = req.params.id;
+    DishModel.findByIdAndUpdate(dishId, {name: name, price: price})
+        .then(()=>{
+            res.redirect('/business/menu')
+        });
+});
 
 module.exports = router;

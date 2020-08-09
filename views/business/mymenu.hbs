@@ -20,12 +20,18 @@
 
 {{#each restaurantInfo.menu}}
     <div class="card" style="width: 18rem;">
-        {{!-- <img class="card-img-top" src="{{this.name}}" alt="restaurantimage cap"> --}}
+        {{!-- <img class="card-img-top" src="{{this.name}}" alt="restaurantimage cap">  --}}
         <div class="card-body">
-                <h5 class="card-title">{{this.name}}</h5>
-                <p class="card-text">{{this.price}} €</p>
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-primary">Delete</a>
+            <form method="POST" action="/business/editDish/{{this._id}}" class="form-inline" >
+                <div class="form-group">
+                    <input name="name" type="text" class="form-control card-title" id="dishname" value="{{this.name}}">
+                </div>
+                <div class="form-group">
+                    <input name="price" type="number" class="form-control card-text" id="dishprice" value= "{{this.price}}"><span>€</span>
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+                <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red">Delete</a>
         </div>
     </div>
 {{/each}}
