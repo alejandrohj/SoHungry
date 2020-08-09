@@ -25,6 +25,10 @@ let orderSchema = new Schema({
         required: true,
         enum: ['done', 'pending']
     },
+    total: {
+        type: Number,
+        required: true,
+    }
 
 });
 
