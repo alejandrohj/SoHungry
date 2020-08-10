@@ -27,7 +27,6 @@ router.post('/search',(req,res)=>{
     const {city, cuisine} = req.body;
     if(city !== 'Choose...' && cuisine === 'Choose...'){
         BusinessModel.find({"location.city": city})
-            .populate('logo')
             .then((matches)=>{
                 req.session.matches = matches;
                 res.redirect('/user');
