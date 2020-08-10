@@ -75,6 +75,7 @@ router.post('/addDish',multipartMiddleware,(req,res)=>{
         let img = cloudinary.image(photo.image.public_id);
         let imgSrc = img.slice(10,(img.length-4));
          req.session.dishPhoto = imgSrc;
+         console.log('temporal imgss:',req.session.dishPhoto)
          res.redirect('/business/menu');
       })
       .finally(function () {

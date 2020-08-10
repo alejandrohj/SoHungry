@@ -1,72 +1,100 @@
 {{> restaurantNavBar this}}
-<div class="addDishForm">
-    <h3>Add a new dish to the Menu:</h3>
-    <form method="POST" action="/business/addDish"  class="form-inline" >
-    <div class="form-group">
-        <label for="dishname">Dish Name:</label>
-        <input name="name" type="text" class="form-control" id="dishname" placeholder="Dish name here">
+<h4>Add a new dish to the Menu:</h4>
+<section class="addNewDish sticky">
+    <div class="imgSection">
+        <div class="sectionItem">
+            <img src={{temporalImg}} width="200" height="200">
+        </div>
+        <div class="sectionItem">
+            <div id='backend_upload'>
+            <form action="/photos/addDish" enctype="multipart/form-data" method="post" class='basicInfo-form'>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Title:</span>
+                    </div>
+                    <input type="text" name='title' id= 'photo_title' value='Dish photo' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="form_controls">
+                    <input id="photo_image" name="image" type="file" />
+                    <input id="photo_image_cache" name="image_cache" type="hidden"/>
+                </div>
+                </div>
+                <div class="form_line">
+                <div class="form_controls">
+                    <input name="commit" type="submit" value="Submit Photo" class="btn btn-primary log-btn" />
+                </div>
+                </div>
+                <input id="direct" name="direct" type="hidden" />
+            </form></div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="dishprice">Dish Price:</label>
-        <input name="price" type="number" step="0.01" class="form-control" id="dishprice" placeholder="Dish price">
+    <div class="addDishForm">
+        <form method="POST" action="/business/addDish"  class="addDishForm" >
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Dish name:</span>
+                </div>
+                <input type="text" name='name' id= 'name' placeholder='Dish name here' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Price:</span>
+                </div>
+                <input type="number" step="0.01" name='price' id= 'price' placeholder='Dish price here' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Dish description:</span>
+                </div>
+                <input type="text" name='description' id= 'description' placeholder='Dish description here' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary log-btn-addDish">Add Dish</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="dishdescription">Dish Description:</label>
-        <input name="description" type="text" class="form-control" id="dishdescription" placeholder="Be creative!">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Add</button>
-    </form>
+</section>
+<div>
+    {{#if errorMessage}}
+        <div>{{errorMessage}}</div>
+    {{/if}}
 </div>
-<div class="imgSection">
-    <h5>Image</h5>
-        <img src={{temporalImg}} width="300">
-    <div id='backend_upload'>
-    <form action="/photos/addDish" enctype="multipart/form-data" method="post">
-        <div class="form_line">
-        <label for="photo_title">Title:</label>
-        <div class="form_controls">
-            <input id="photo_title" name="title" size="30" type="text" value="Dish photo" />
+<div class="dishesInfo">
+    {{#each restaurantInfo.menu}}
+        <div class="card mb-3" style="max-width: 550px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src={{this.photo}} class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <form method="POST" action="/business/editDish/{{this._id}}" class="form-inline dishForm" >
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Dish:</span>
+                                </div>
+                                <input name="name" type="text" class="form-control card-title" id="dishname" value="{{this.name}}" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Price(€):</span>
+                                </div>
+                                <input name="price" type="number" step="0.01" class="form-control card-text" id="dishprice" value= "{{this.price}}" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Description:</span>
+                                </div>
+                                <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}" aria-describedby="basic-addon1">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-yellow">Edit</button>
+                        </form>
+                        <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red">Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="form_line">
-        <label for="photo_image">Image:</label>
-        <div class="form_controls">
-            <input id="photo_image" name="image" type="file" />
-            <input id="photo_image_cache" name="image_cache" type="hidden" />
-        </div>
-        </div>
-        <div class="form_line">
-        <div class="form_controls">
-            <input name="commit" type="submit" value="Submit Photo" />
 
-        </div>
-        </div>
-        <input id="direct" name="direct" type="hidden" />
-    </form></div>
+    {{/each}}
 </div>
-<hr>
-{{#if errorMessage}}
-<div>{{errorMessage}}</div>
-{{/if}}
-
-{{#each restaurantInfo.menu}}
-    <div class="card" style="width: 18rem;">
-        <img src ={{this.photo}} width="300">
-        <div class="card-body">
-            <form method="POST" action="/business/editDish/{{this._id}}" class="form-inline" >
-                <div class="form-group">
-                    <input name="name" type="text" class="form-control card-title" id="dishname" value="{{this.name}}">
-                </div>
-                <div class="form-group">
-                    <input name="price" type="number" step="0.01" class="form-control card-text" id="dishprice" value= "{{this.price}}"><span>€</span>
-                </div>
-                <div class="form-group">
-                    <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}">
-                </div>
-                <button type="submit" class="btn btn-yellow">Edit</button>
-            </form>
-                <a href="/business/delete/{{this._id}}" class="btn btn-red">Delete</a>
-        </div>
-    </div>
-{{/each}}
