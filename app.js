@@ -2,8 +2,15 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const logger = require('morgan');
+var cloudinary = require('cloudinary').v2;
 
-
+if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
+  console.warn('!! cloudinary config is undefined !!');
+  console.warn('export CLOUDINARY_URL or set dotenv file');
+} else {
+  console.log('cloudinary config:');
+  console.log(cloudinary.config());
+}
 
 // Used to setthe favicon for our app
 // const favicon = require('serve-favicon');
@@ -56,7 +63,10 @@ app.use(session({
 const indexRouter = require('./routes/index.routes');
 const userRouter = require('./routes/user.routes');
 const businessRouter = require('./routes/business.routes');
+const photosRouter = require('./routes/photo.routes');
+
 app.use('/', indexRouter);
+app.use('/photos', photosRouter);
 
 // const userRouter = require('./routes/user.routes');
 // const businessRouter = require('./routes/business.routes');

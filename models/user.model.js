@@ -33,7 +33,10 @@ let businessSchema = new Schema({
         required: true
     },
     capacity: Number,
-    logo: String,
+    logo:{
+        type: Schema.Types.ObjectId,
+        ref: 'photo'
+    },
     location:{
         city: String,
         address: String

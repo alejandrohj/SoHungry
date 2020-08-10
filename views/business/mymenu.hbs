@@ -1,17 +1,45 @@
 {{> restaurantNavBar this}}
 <div class="addDishForm">
     <h3>Add a new dish to the Menu:</h3>
-    <form method="POST" action="/business/addDish" class="form-inline" >
+    <form method="POST" action="/business/addDish"  class="form-inline" >
     <div class="form-group">
         <label for="dishname">Dish Name:</label>
         <input name="name" type="text" class="form-control" id="dishname" placeholder="Dish name here">
     </div>
     <div class="form-group">
         <label for="dishprice">Dish Price:</label>
-        <input name="price" type="number" class="form-control" id="dishprice" placeholder="Dish price">
+        <input name="price" type="number" step="0.01" class="form-control" id="dishprice" placeholder="Dish price">
     </div>
+    <br>
     <button type="submit" class="btn btn-primary">Add</button>
     </form>
+</div>
+<div class="imgSection">
+    <h5>Image</h5>
+        {{{currentImg}}}
+    <div id='backend_upload'>
+    <form action="/photos/addDish" enctype="multipart/form-data" method="post">
+        <div class="form_line">
+        <label for="photo_title">Title:</label>
+        <div class="form_controls">
+            <input id="photo_title" name="title" size="30" type="text" value="Dish photo" />
+        </div>
+        </div>
+        <div class="form_line">
+        <label for="photo_image">Image:</label>
+        <div class="form_controls">
+            <input id="photo_image" name="image" type="file" />
+            <input id="photo_image_cache" name="image_cache" type="hidden" />
+        </div>
+        </div>
+        <div class="form_line">
+        <div class="form_controls">
+            <input name="commit" type="submit" value="Submit Photo" />
+
+        </div>
+        </div>
+        <input id="direct" name="direct" type="hidden" />
+    </form></div>
 </div>
 <hr>
 {{#if errorMessage}}
@@ -20,16 +48,16 @@
 
 {{#each restaurantInfo.menu}}
     <div class="card" style="width: 18rem;">
-        {{!-- <img class="card-img-top" src="{{this.name}}" alt="restaurantimage cap">  --}}
+        {{{this.photo}}}
         <div class="card-body">
             <form method="POST" action="/business/editDish/{{this._id}}" class="form-inline" >
                 <div class="form-group">
                     <input name="name" type="text" class="form-control card-title" id="dishname" value="{{this.name}}">
                 </div>
                 <div class="form-group">
-                    <input name="price" type="number" class="form-control card-text" id="dishprice" value= "{{this.price}}"><span>€</span>
+                    <input name="price" type="number" step="0.01" class="form-control card-text" id="dishprice" value= "{{this.price}}"><span>€</span>
                 </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary btn-yellow">Edit</button>
             </form>
                 <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red">Delete</a>
         </div>
