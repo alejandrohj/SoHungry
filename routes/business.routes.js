@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const cloudinary = require('cloudinary').v2;
-const {CustomerModel, BusinessModel} = require('../models/user.model');
+const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
 
