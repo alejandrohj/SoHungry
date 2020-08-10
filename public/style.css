@@ -152,6 +152,28 @@ hr {
 
 .table-cell {
   width: 100px;
+  text-align: center;
+}
+
+.card-header {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.card-footer {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.card-body-myorders {
+  background-color: #42E497;
+  display: flex;
+  align-items: center;
+}
+
+.myorders-table {
+  background-color: #42E497;
+  border: none;
 }
 
 /*# sourceMappingURL=style.css.map */

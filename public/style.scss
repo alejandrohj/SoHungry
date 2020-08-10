@@ -137,3 +137,24 @@ hr{
     width: 100px;
     text-align: center;
 }
+
+.card-header{
+    background-color: $tertiary-color;
+    color: $backgroung-color
+}
+.card-footer{
+    background-color: $tertiary-color;
+    color: $backgroung-color
+}
+
+.card-body-myorders{
+    background-color: $secondary-color;
+    display: flex;
+    align-items: center;
+
+}
+.myorders-table{
+    background-color: $secondary-color;
+    border: none;
+    justify-content: center;
+}

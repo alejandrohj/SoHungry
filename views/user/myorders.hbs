@@ -7,8 +7,8 @@
     <div class="card-header"><h2>{{this.business.userName}}</h2>
     <span>{{this.status}}</span>
     </div>
-    <div class="card-body"></div>
-    <table>
+    <div class="card-body card-body-myorders">
+    <table class='myorders-table'>
         <tr class='myorder-item'><th class='table-cell'>Dish</th><th class='table-cell'>Price</th><th class='table-cell'>Quantity</th></tr>
     {{#each order}}
         {{#if this.quantity}}
@@ -22,6 +22,7 @@
         {{/if}}
 {{/each}}
 </table>
+</div>
 <div class="card-footer">
     <h4>Total: {{this.total}}</h4>
 </div>
