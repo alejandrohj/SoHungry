@@ -61,6 +61,7 @@ router.post('/signup', (req, res) =>{
 
 router.post('/login', (req, res) => {
   const { userName, password, usertype} = req.body
+  console.log(req.body)
 
   if( !userName || !password){
       res.status(500).render('login.hbs', {errorMessage: 'Please enter all details'})

@@ -1,3 +1,7 @@
+body {
+  background-color: #F0EAEB;
+}
+
 #inputState {
   margin-left: 10px;
 }
@@ -27,6 +31,45 @@
 
 .navbar-toggler {
   background-color: #4AD770;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #F0EAEB;
+}
+
+#btn-logOut {
+  list-style: none;
+  color: #F0EAEB;
+  font-style: oblique;
+}
+
+.btn-primary {
+  background-color: #4267E4;
+}
+
+.sign-form {
+  margin: 50% 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose-type {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.log-btn {
+  margin: 30px;
+}
+
+.input-group-text {
+  background-color: #42E497;
+}
+
+a {
+  color: #4267E4;
 }
 
 /*# sourceMappingURL=style.css.map */
