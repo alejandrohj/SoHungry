@@ -15,10 +15,17 @@ $backgroung-color: #F0EAEB;
     margin-left: 5px;
 }
 .btn-yellow{
-    background-color: gold;
-    border-color: gold;
+    background-color: $edit-color;
+    border-color: $edit-color;
 }
 .btn-red{
-    background-color: tomato;
-    border-color: tomato;
+    background-color: $warning-color;
+    border-color: $warning-color;
+}
+#navbar-hungry{
+    background-color: $tertiary-color;
+    color: $backgroung-color;
+}
+.navbar-toggler{
+    background-color: $primary-color;
 }

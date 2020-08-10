@@ -11,13 +11,22 @@
 }
 
 .btn-yellow {
-  background-color: gold;
-  border-color: gold;
+  background-color: #E4BF42;
+  border-color: #E4BF42;
 }
 
 .btn-red {
-  background-color: tomato;
-  border-color: tomato;
+  background-color: #F50D22;
+  border-color: #F50D22;
+}
+
+#navbar-hungry {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.navbar-toggler {
+  background-color: #4AD770;
 }
 
 /*# sourceMappingURL=style.css.map */
