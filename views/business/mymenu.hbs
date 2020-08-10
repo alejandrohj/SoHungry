@@ -20,7 +20,7 @@
 </div>
 <div class="imgSection">
     <h5>Image</h5>
-        {{{ temporalImg}}}
+        <img src={{temporalImg}} width="300">
     <div id='backend_upload'>
     <form action="/photos/addDish" enctype="multipart/form-data" method="post">
         <div class="form_line">
@@ -52,7 +52,7 @@
 
 {{#each restaurantInfo.menu}}
     <div class="card" style="width: 18rem;">
-        {{{this.photo}}}
+        <img src ={{this.photo}} width="300">
         <div class="card-body">
             <form method="POST" action="/business/editDish/{{this._id}}" class="form-inline" >
                 <div class="form-group">
@@ -64,9 +64,9 @@
                 <div class="form-group">
                     <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}">
                 </div>
-                <button type="submit" class="btn btn-primary btn-yellow">Edit</button>
+                <button type="submit" class="btn btn-yellow">Edit</button>
             </form>
-                <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red">Delete</a>
+                <a href="/business/delete/{{this._id}}" class="btn btn-red">Delete</a>
         </div>
     </div>
 {{/each}}

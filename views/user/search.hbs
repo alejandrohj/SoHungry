@@ -1,38 +1,46 @@
 {{> customerNavBar this}}
 <div>
-  <form method="POST" action="/user/search" class="form-inline" id="searchForm">
-    <div class="form-group col-md-4">
-        <label for="inputState">City</label><br>
-        <select name="city" id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            {{#each restaurants}}
-            <option>{{this.location.city}}</option>
-            {{/each}}
-            
-        </select>
+  <form method="POST" action="/user/search" class="form-inline" id='search-all'>
+  <div id="searchForm">
+        <div class="form-group search-group">
+            <label for="inputState" class='search-label rounded'>City</label>
+            <select name="city" id="inputState" class="form-control search-control">
+                <option selected>Choose...</option>
+                {{#each restaurants}}
+                <option>{{this.location.city}}</option>
+                {{/each}}
+                
+            </select>
+        </div>
+        <div class="form-group search-group">
+            <label for="inputState" class='search-label rounded'>Cuisine</label>
+            <select name = "cuisine" id="inputState" class="form-control search-control">
+                <option selected>Choose...</option>
+                {{#each restaurants}}
+                <option>{{this.cuisine}}</option>
+                {{/each}}
+            </select>
+        </div>
     </div>
-    <div class="form-group col-md-4">
-        <label for="inputState">Cuisine</label><br>
-        <select name = "cuisine" id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            {{#each restaurants}}
-            <option>{{this.cuisine}}</option>
-            {{/each}}
-        </select>
-    </div>
-    <div class="form-group col-md-4">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-    
+    <button type="submit" class="btn btn-primary">Search</button>
+
     </form>
+
+    <hr>
     <div class="searchMatches">
         {{#if matches}}
             {{#each matches}}
-                <div class="card" style="width: 18rem;">
-                   {{{this.logo}}}
-                    <div class="card-body">
+                <div class="card-search card" style="width: 100%;">
+                    <img src={{this.logo}} alt="Logo" width='100'>
+                    <div class="card-body-search card-body">
                         <h5 class="card-title">{{this.userName}}</h5>
-                        <p class="card-text">{{this.cuisine}}</p>
+                        <div class='card-tags'>                           
+                            <span class="card-text">{{this.location.city}}</span>
+                            <span>{{this.cuisine}}</span>
+                        </div>
+                        <div class='card-description'>                           
+                            <span>{{this.description}}</span>
+                        </div>
                         <a href="/user/order/{{this._id}}" class="btn btn-primary">Order</a>
                     </div>
                 </div>
@@ -40,4 +48,3 @@
         {{/if}}
     </div>
 </div>
-<hr>

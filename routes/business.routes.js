@@ -26,7 +26,7 @@ router.get('/',(req,res)=>{
 router.get('/menu',(req,res)=>{
     let temporalImg
     if(req.session.dishPhoto){
-        temporalImg = cloudinary.image(req.session.dishPhoto.image.public_id, { transformation: { width: 300, height: 200, crop: "pad" }})
+        temporalImg = req.session.dishPhoto;
     }
     BusinessModel.findById({_id:req.session.loggedInUser._id})
         .populate({
@@ -63,7 +63,8 @@ router.post('/addDish',(req,res)=>{
         return;
     }
     else{
-        DishModel.create({name: name, price: price, description: description, photo: cloudinary.image(req.session.dishPhoto.image.public_id, { transformation: { width: 300, height: 200, crop: "pad" }})}) //We create the new dish
+        
+        DishModel.create({name: name, price: price, description: description, photo: req.session.dishPhoto}) //We create the new dish
         .then((dishToReference)=>{
             BusinessModel.findById(req.session.loggedInUser._id) //Show the logged restaurant
                 .then((currentBusiness)=>{

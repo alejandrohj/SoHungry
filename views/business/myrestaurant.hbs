@@ -1,7 +1,19 @@
 {{> restaurantNavBar this}}
+<div class="card" style="width: 18rem;">
+  {{!-- <img src='{{this.logo}}' width="300px"> --}}
+  <img src={{restaurant.logo}} width="300">
+  <div class="card-body">
+    <h5 class="card-title">{{restaurant.userName}}</h5>
+    <p class="card-text">{{restaurant.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cuisine: {{restaurant.cuisine}}</li>
+    <li class="list-group-item">Restaurant capacity: {{restaurant.capacity}}</li>
+  </ul>
+</div>
+<hr>
 <div class="logoSection">
-    <h5>Logo</h5>
-    {{{restaurant.logo}}}
+    <h5>Edit logo:</h5>
     <div id='backend_upload'>
     <form action="/photos/addLogo" enctype="multipart/form-data" method="post">
         <div class="form_line">
@@ -28,9 +40,10 @@
 </div>
 <form action="business" method="POST">
     <section>
+        <h4>Edit my information</h4>
         {{!-- <img src="{{restaurant.logo}}" alt="logo"> --}}
         <article>
-            <h4>Basic Info</h4>
+            <h6>Edit basic information:</h6>
             <label for="userName">Name</label>
             <input type="text" name='userName' id='userName' value='{{restaurant.userName}}'>
             <label for="cuisine">Cuisine</label>
@@ -41,12 +54,12 @@
             <input type="text" name='description' id='description' value='{{restaurant.description}}'>
         </article>
         <article>
-            <h4>Contact information</h4>
-            <label for="city">Name</label>
+            <h6>Edit contact information</h6>
+            <label for="city">City</label>
             <input type="text" name='city' id='city' value='{{restaurant.location.city}}'>
-            <label for="address">Name</label>
+            <label for="address">Address</label>
             <input type="text" name='address' id='address' value='{{restaurant.location.address}}'>
-            <label for="email">Name</label>
+            <label for="email">Email</label>
             <input type="email" name='email' id='email' value='{{restaurant.email}}'>
         </article>
     </section>

@@ -27,7 +27,6 @@ router.post('/search',(req,res)=>{
     const {city, cuisine} = req.body;
     if(city !== 'Choose...' && cuisine === 'Choose...'){
         BusinessModel.find({"location.city": city})
-            .populate('logo')
             .then((matches)=>{
                 req.session.matches = matches;
                 res.redirect('/user');
@@ -69,7 +68,6 @@ router.post ('/order/:id', (req, res)=>{
     let idArr = Object.keys(req.body).slice(0, -1);
     let quantArr = Object.values(req.body).slice(0, -1);
     const order = idArr.map((element, index)=>({'dishId': element, 'quantity': quantArr[index]}));
-    console.log (order)
     OrderModel.create({user: req.session.loggedInUser._id, business: req.params.id, order, status: 'pending', total})
         .then(()=>res.redirect ('/user/myorders'))
         .catch(err => console.log('Could not create order. Error is: '+ err))
