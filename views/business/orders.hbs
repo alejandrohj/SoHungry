@@ -1,18 +1,17 @@
-{{> customerNavBar this}}
+{{> restaurantNavBar this}}
 
-<h1>Your order history</h1>
+<h1>Orders</h1>
 <article>
 {{#each orders}}
 <h2>Order</h2>
-<div>{{this.business.userName}}</div>
+<div>{{this.user.userName}}</div>
 <div>{{this.status}}</div>
 {{#each order}}
 {{#if this.quantity}}
 <div>Dish: {{this.dishId.name}}</div>
-<div>Price: {{this.dishId.price}}</div>
 <div>Quantity: {{this.quantity}}</div>
 </article>
 {{/if}}
 {{/each}}
-<h3>Total: {{this.total}}</h3>
+<form action="/business/orders/{{this._id}}" method="post"><button type="submit">Mark as done</button></form>
 {{/each}}

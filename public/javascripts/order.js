@@ -14,5 +14,4 @@ function updateSubtotal(dish) {
     subtotals.forEach(subtotal=>{total+=Number(subtotal.innerText)})
     document.getElementById('order-total').value=total;
   }
-
 setInterval(calculateAll, 1)

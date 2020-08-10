@@ -3,6 +3,7 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const { BusinessModel } = require('../models/user.model');
 const DishModel = require('../models/dish.model');
+const OrderModel = require('../models/order.model');
 
 
 router.use((req,res,next) => {
@@ -66,6 +67,7 @@ router.post('/addDish',(req,res)=>{
     }
 });
 
+
 router.post('/editDish/:id',(req,res)=>{
     const {name, price} = req.body;
     const dishId = req.params.id;
@@ -74,5 +76,18 @@ router.post('/editDish/:id',(req,res)=>{
             res.redirect('/business/menu')
         });
 });
+
+router.get('/orders', (req, res)=>{
+    OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
+        .then((orders)=>res.render('business/orders', {orders}))
+        .catch((err)=> console.log('Could not get orders. Error: ', err))
+})
+
+router.post('/orders/:id', (req, res)=>{
+    const orderId = req.params.id
+    OrderModel.findByIdAndUpdate(orderId, {status: 'done'})
+        .then(()=> res.redirect('/business/orders'))
+        .catch((err)=> console.log('Could not update status. Error:', err))
+})
 
 module.exports = router;
