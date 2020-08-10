@@ -5,8 +5,10 @@ $tertiary-color: #4267E4;
 $warning-color: #F50D22;
 $backgroung-color: #F0EAEB;
 
+
 body{
     background-color: $backgroung-color;
+    font-family: Montserrat, sans-serif;
 }
 #inputState {
     margin-left: 10px;
@@ -134,7 +136,7 @@ hr{
 }
 
 .table-cell{
-    width: 100px;
+    width: 150px;
     text-align: center;
 }
 
@@ -151,6 +153,7 @@ hr{
     background-color: $secondary-color;
     display: flex;
     align-items: center;
+    justify-content: center;
 
 }
 .myorders-table{
