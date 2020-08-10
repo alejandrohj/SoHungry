@@ -1,11 +1,10 @@
 <article class='dish'>
+    {{{this.photo}}}
     <p>{{this.name}}</p>
+    <p>{{this.description}}</p>
     <p class='price'>{{this.price}}</p>
     <div>
-        <input type="number" name="quantity" id="quantity" class="quantity" value='0'>
+        <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
     </div>
     <div class='subtotal'>Subtotal: <span>0</span>€</div>
-    <input type="button" class="update" value="Update order">
-    {{!-- <input type="button" class="update">Update order</button> --}}
-
 </article>

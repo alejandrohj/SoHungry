@@ -37,7 +37,6 @@ router.post('/signup', (req, res) =>{
         .then((salt) => {
             bcryptjs.hash(password , salt)
               .then((hashPass) => {
-                  console.log(hashPass)
                   CustomerModel.create({userName, email, passwordHash: hashPass })
                     .then(() => {
                         res.redirect('/')
@@ -51,7 +50,6 @@ router.post('/signup', (req, res) =>{
         .then((salt) => {
             bcryptjs.hash(password , salt)
               .then((hashPass) => {
-                  console.log(hashPass)
                   BusinessModel.create({userName, email, passwordHash: hashPass })
                     .then(() => {
                         res.redirect('/')
@@ -99,10 +97,8 @@ router.post('/login', (req, res) => {
     .then((user)=>{
       const match = bcryptjs.compare(password, user.passwordHash)
       if (match){
-        console.log ('Password matches')
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        //console.log (req.session)
         res.redirect('/business')
       }
       else{

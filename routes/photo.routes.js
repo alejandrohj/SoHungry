@@ -33,7 +33,7 @@ router.post('/addLogo',multipartMiddleware,(req,res)=>{
       return photo.save();
     })
     .then(function () {
-        BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id, {logo: photo._id})
+        BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id, {logo: cloudinary.image(photo.image.public_id, { transformation: { width: 300, height:200, crop: "pad" }})})
         .then((response)=>{
             res.redirect('/business')
             //res.render('phototest.hbs', { photo: photo, upload: photo.image })

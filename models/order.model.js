@@ -25,10 +25,11 @@ let orderSchema = new Schema({
         required: true,
         enum: ['done', 'pending']
     },
-    description: {
-        type: String,
-        maxlength: 100
+    total: {
+        type: Number,
+        required: true,
     }
+
 });
 
 module.exports = model('order', orderSchema);

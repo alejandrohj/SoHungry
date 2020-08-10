@@ -34,8 +34,7 @@ let businessSchema = new Schema({
     },
     capacity: Number,
     logo:{
-        type: Schema.Types.ObjectId,
-        ref: 'photo'
+        type: String
     },
     location:{
         city: String,
@@ -49,7 +48,11 @@ let businessSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'dish'
-        }]
+        }],
+    description: {
+        type: String,
+        maxlength: 100
+    }
 
 })
 
