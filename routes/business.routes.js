@@ -4,6 +4,7 @@ const bcryptjs = require('bcryptjs');
 const cloudinary = require('cloudinary').v2;
 const {CustomerModel, BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
+const OrderModel = require('../models/order.model');
 
 
 router.use((req,res,next) => {
@@ -18,7 +19,6 @@ router.use((req,res,next) => {
 router.get('/',(req,res)=>{
     BusinessModel.find({_id: req.session.loggedInUser._id})
     .then((restaurant)=>{
-        console.log('temporal imgae:', temporalImg);
         res.render('business/myrestaurant.hbs', {restaurant: restaurant[0]});
     })
     .catch((err) => console.log ('Could not find restaurant. Error: ', err))
@@ -79,6 +79,7 @@ router.post('/addDish',(req,res)=>{
     }
 });
 
+
 router.post('/editDish/:id',(req,res)=>{
     const {name, price, description} = req.body;
     const dishId = req.params.id;
@@ -103,5 +104,17 @@ router.get('/delete/:id',(req,res)=>{
                 }); 
         });          
 });
+router.get('/orders', (req, res)=>{
+    OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
+        .then((orders)=>res.render('business/orders', {orders}))
+        .catch((err)=> console.log('Could not get orders. Error: ', err))
+})
+
+router.post('/orders/:id', (req, res)=>{
+    const orderId = req.params.id
+    OrderModel.findByIdAndUpdate(orderId, {status: 'done'})
+        .then(()=> res.redirect('/business/orders'))
+        .catch((err)=> console.log('Could not update status. Error:', err))
+})
 
 module.exports = router;
