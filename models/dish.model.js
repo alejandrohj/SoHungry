@@ -5,7 +5,10 @@ let dishSchema = new Schema({
         type: String,
         required: true,
     },
-    price: Number
+    price: Number,
+    photo:{
+        type: String
+    }
 });
 
 module.exports = model('dish', dishSchema);

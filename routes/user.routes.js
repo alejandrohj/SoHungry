@@ -56,4 +56,24 @@ router.get('/logout',(req,res)=>{
     })
 });
 
+router.get ('/order/:id', (req, res)=>{
+    BusinessModel.findById(req.params.id).populate('menu')
+        .then((result)=>{
+            console.log(result)
+            res.render ('user/order.hbs', {dish: result.menu, id: result._id})
+        })
+        .catch(err => console.log('Could not find restaurant. Error is: '+ err))
+
+})
+
+router.post ('/order/:id', (req, res)=>{
+    // BusinessModel.findById(req.params.id).populate('menu')
+    //     .then((result)=>{
+    //         console.log(result)
+            res.redirect ('/user')
+        })
+//         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
+
+// })
+
 module.exports = router;

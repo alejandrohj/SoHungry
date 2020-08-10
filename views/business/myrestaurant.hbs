@@ -1,32 +1,58 @@
 {{> restaurantNavBar this}}
-<form action="business" method="POST">
-<section>
-    <img src="{{restaurant.logo}}" alt="logo">
-    <article>
-        <h4>Basic Info</h4>
-        <label for="userName">Name</label>
-        <input type="text" name='userName' id='userName' value='{{restaurant.userName}}'>
-        <label for="cuisine">Cuisine</label>
-        <input type="text" name='cuisine' id='cuisine' value='{{restaurant.cuisine}}'>
-        <label for="capacity">Capacity</label>
-        <input type="number" name='capacity' id='capacity' value='{{restaurant.capacity}}'>
-        <label for="description">Description</label>
-        <input type="text" name='description' id='description' value='{{restaurant.description}}'>
-    </article>
+<div class="logoSection">
+    <h5>Logo</h5>
+    <img src={{logoSrc}} width="300px">
+    <div id='backend_upload'>
+    <form action="/photos/addLogo" enctype="multipart/form-data" method="post">
+        <div class="form_line">
+        <label for="photo_title">Title:</label>
+        <div class="form_controls">
+            <input id="photo_title" name="title" size="30" type="text" value="Dish photo" />
+        </div>
+        </div>
+        <div class="form_line">
+        <label for="photo_image">Image:</label>
+        <div class="form_controls">
+            <input id="photo_image" name="image" type="file" />
+            <input id="photo_image_cache" name="image_cache" type="hidden" />
+        </div>
+        </div>
+        <div class="form_line">
+        <div class="form_controls">
+            <input name="commit" type="submit" value="Submit Photo" />
 
-    <article>
-        <h4>Insert your logo url</h4>
-        <input type="text" name='logo' id='logo' value='{{restaurant.logo}}'>
-    </article>
-    <article>
-        <h4>Contact information</h4>
-        <label for="city">Name</label>
-        <input type="text" name='city' id='city' value='{{restaurant.location.city}}'>
-        <label for="address">Name</label>
-        <input type="text" name='address' id='address' value='{{restaurant.location.address}}'>
-        <label for="email">Name</label>
-        <input type="email" name='email' id='email' value='{{restaurant.email}}'>
-    </article>
-</section>
-<button type="submit">Confirm changes</button>
+        </div>
+        </div>
+        <input id="direct" name="direct" type="hidden" />
+    </form></div>
+</div>
+<form action="business" method="POST">
+    <section>
+        {{!-- <img src="{{restaurant.logo}}" alt="logo"> --}}
+        <article>
+            <h4>Basic Info</h4>
+            <label for="userName">Name</label>
+            <input type="text" name='userName' id='userName' value='{{restaurant.userName}}'>
+            <label for="cuisine">Cuisine</label>
+            <input type="text" name='cuisine' id='cuisine' value='{{restaurant.cuisine}}'>
+            <label for="capacity">Capacity</label>
+            <input type="number" name='capacity' id='capacity' value='{{restaurant.capacity}}'>
+            <label for="description">Description</label>
+            <input type="text" name='description' id='description' value='{{restaurant.description}}'>
+        </article>
+        <article>
+            <h4>Contact information</h4>
+            <label for="city">Name</label>
+            <input type="text" name='city' id='city' value='{{restaurant.location.city}}'>
+            <label for="address">Name</label>
+            <input type="text" name='address' id='address' value='{{restaurant.location.address}}'>
+            <label for="email">Name</label>
+            <input type="email" name='email' id='email' value='{{restaurant.email}}'>
+        </article>
+    </section>
+    <button type="submit">Confirm changes</button>
 </form>
+
+
+
+

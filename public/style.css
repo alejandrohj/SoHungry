@@ -6,5 +6,12 @@
 }
 .btn-primary{
     margin-left: 5px;
-    margin-top: 15px;
+}
+.btn-yellow{
+    background-color: gold;
+    border-color: gold;
+}
+.btn-red{
+    background-color: tomato;
+    border-color: tomato;
 }
