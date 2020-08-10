@@ -1,17 +1,46 @@
 #inputState {
-    margin-left: 10px;
+  margin-left: 10px;
 }
+
 .addDishForm {
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.btn-primary{
-    margin-left: 5px;
+
+.btn-primary {
+  margin-left: 5px;
 }
-.btn-yellow{
-    background-color: gold;
-    border-color: gold;
+
+.btn-yellow {
+  background-color: #E4BF42;
+  border-color: #E4BF42;
 }
-.btn-red{
-    background-color: tomato;
-    border-color: tomato;
+
+.btn-red {
+  background-color: #F50D22;
+  border-color: #F50D22;
 }
+
+#navbar-hungry {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.navbar-toggler {
+  background-color: #4AD770;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #F0EAEB;
+}
+
+#btn-logOut {
+  list-style: none;
+  color: #F0EAEB;
+  font-style: oblique;
+}
+
+.logoSection {
+  border: 1px solid #42E497;
+}
+
+/*# sourceMappingURL=style.css.map */

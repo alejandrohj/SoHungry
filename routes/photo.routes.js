@@ -33,7 +33,10 @@ router.post('/addLogo',multipartMiddleware,(req,res)=>{
       return photo.save();
     })
     .then(function () {
-        BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id, {logo: cloudinary.image(photo.image.public_id, { transformation: { width: 300, height:200, crop: "pad" }})})
+        let img = cloudinary.image(photo.image.public_id);
+        let imgSrc = img.slice(10,(img.length-4));
+        console.log(imgSrc);
+        BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id, {logo: imgSrc})
         .then((response)=>{
             res.redirect('/business')
             //res.render('phototest.hbs', { photo: photo, upload: photo.image })
@@ -69,7 +72,9 @@ router.post('/addDish',multipartMiddleware,(req,res)=>{
         return photo.save();
       })
       .then(function () {
-         req.session.dishPhoto = photo;
+        let img = cloudinary.image(photo.image.public_id);
+        let imgSrc = img.slice(10,(img.length-4));
+         req.session.dishPhoto = imgSrc;
          res.redirect('/business/menu');
       })
       .finally(function () {

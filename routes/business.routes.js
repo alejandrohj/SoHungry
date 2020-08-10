@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcryptjs = require('bcryptjs');
 const cloudinary = require('cloudinary').v2;
 const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
@@ -27,7 +26,7 @@ router.get('/',(req,res)=>{
 router.get('/menu',(req,res)=>{
     let temporalImg
     if(req.session.dishPhoto){
-        temporalImg = cloudinary.image(req.session.dishPhoto.image.public_id, { transformation: { width: 300, height: 200, crop: "pad" }})
+        temporalImg = req.session.dishPhoto;
     }
     BusinessModel.findById({_id:req.session.loggedInUser._id})
         .populate({
@@ -64,7 +63,8 @@ router.post('/addDish',(req,res)=>{
         return;
     }
     else{
-        DishModel.create({name: name, price: price, description: description, photo: cloudinary.image(req.session.dishPhoto.image.public_id, { transformation: { width: 300, height: 200, crop: "pad" }})}) //We create the new dish
+        
+        DishModel.create({name: name, price: price, description: description, photo: req.session.dishPhoto}) //We create the new dish
         .then((dishToReference)=>{
             BusinessModel.findById(req.session.loggedInUser._id) //Show the logged restaurant
                 .then((currentBusiness)=>{
@@ -79,7 +79,6 @@ router.post('/addDish',(req,res)=>{
     }
 });
 
-
 router.post('/editDish/:id',(req,res)=>{
     const {name, price, description} = req.body;
     const dishId = req.params.id;
@@ -89,6 +88,18 @@ router.post('/editDish/:id',(req,res)=>{
         });
 });
 
+router.get('/orders', (req, res)=>{
+    OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
+        .then((orders)=>res.render('business/orders', {orders}))
+        .catch((err)=> console.log('Could not get orders. Error: ', err))
+})
+
+router.post('/orders/:id', (req, res)=>{
+    const orderId = req.params.id
+    OrderModel.findByIdAndUpdate(orderId, {status: 'done'})
+        .then(()=> res.redirect('/business/orders'))
+        .catch((err)=> console.log('Could not update status. Error:', err))
+})
 router.get('/delete/:id',(req,res)=>{
     DishModel.findByIdAndDelete(req.params.id)
         .then(()=>{
@@ -104,17 +115,5 @@ router.get('/delete/:id',(req,res)=>{
                 }); 
         });          
 });
-router.get('/orders', (req, res)=>{
-    OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
-        .then((orders)=>res.render('business/orders', {orders}))
-        .catch((err)=> console.log('Could not get orders. Error: ', err))
-})
-
-router.post('/orders/:id', (req, res)=>{
-    const orderId = req.params.id
-    OrderModel.findByIdAndUpdate(orderId, {status: 'done'})
-        .then(()=> res.redirect('/business/orders'))
-        .catch((err)=> console.log('Could not update status. Error:', err))
-})
 
 module.exports = router;

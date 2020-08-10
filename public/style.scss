@@ -1,0 +1,42 @@
+$primary-color: #4AD770;
+$secondary-color: #42E497;
+$edit-color: #E4BF42;
+$tertiary-color: #4267E4;
+$warning-color: #F50D22;
+$backgroung-color: #F0EAEB;
+
+#inputState {
+    margin-left: 10px;
+}
+.addDishForm {
+    margin-left: 20px;
+}
+.btn-primary{
+    margin-left: 5px;
+}
+.btn-yellow{
+    background-color: $edit-color;
+    border-color: $edit-color;
+}
+.btn-red{
+    background-color: $warning-color;
+    border-color: $warning-color;
+}
+#navbar-hungry{
+    background-color: $tertiary-color;
+    color: $backgroung-color;
+}
+.navbar-toggler{
+    background-color: $primary-color;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: $backgroung-color;
+}
+#btn-logOut{
+    list-style: none;
+    color: $backgroung-color;
+    font-style: oblique;
+}
+.logoSection{
+    border: 1px solid $secondary-color;
+}
