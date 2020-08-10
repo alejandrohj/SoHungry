@@ -1,17 +1,23 @@
 #inputState {
-    margin-left: 10px;
+  margin-left: 10px;
 }
+
 .addDishForm {
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.btn-primary{
-    margin-left: 5px;
+
+.btn-primary {
+  margin-left: 5px;
 }
-.btn-yellow{
-    background-color: gold;
-    border-color: gold;
+
+.btn-yellow {
+  background-color: gold;
+  border-color: gold;
 }
-.btn-red{
-    background-color: tomato;
-    border-color: tomato;
+
+.btn-red {
+  background-color: tomato;
+  border-color: tomato;
 }
+
+/*# sourceMappingURL=style.css.map */

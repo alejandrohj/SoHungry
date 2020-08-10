@@ -34,8 +34,7 @@ let businessSchema = new Schema({
     },
     capacity: Number,
     logo:{
-        type: Schema.Types.ObjectId,
-        ref: 'photo'
+        type: String
     },
     location:{
         city: String,

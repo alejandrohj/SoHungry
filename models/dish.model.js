@@ -8,7 +8,8 @@ let dishSchema = new Schema({
     price: Number,
     photo:{
         type: String
-    }
+    },
+    description : String
 });
 
 module.exports = model('dish', dishSchema);

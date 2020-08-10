@@ -10,13 +10,17 @@
         <label for="dishprice">Dish Price:</label>
         <input name="price" type="number" step="0.01" class="form-control" id="dishprice" placeholder="Dish price">
     </div>
+    <div class="form-group">
+        <label for="dishdescription">Dish Description:</label>
+        <input name="description" type="text" class="form-control" id="dishdescription" placeholder="Be creative!">
+    </div>
     <br>
     <button type="submit" class="btn btn-primary">Add</button>
     </form>
 </div>
 <div class="imgSection">
     <h5>Image</h5>
-        {{{currentImg}}}
+        {{{ temporalImg}}}
     <div id='backend_upload'>
     <form action="/photos/addDish" enctype="multipart/form-data" method="post">
         <div class="form_line">
@@ -56,6 +60,9 @@
                 </div>
                 <div class="form-group">
                     <input name="price" type="number" step="0.01" class="form-control card-text" id="dishprice" value= "{{this.price}}"><span>€</span>
+                </div>
+                <div class="form-group">
+                    <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}">
                 </div>
                 <button type="submit" class="btn btn-primary btn-yellow">Edit</button>
             </form>

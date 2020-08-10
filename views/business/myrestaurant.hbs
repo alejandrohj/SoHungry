@@ -1,7 +1,7 @@
 {{> restaurantNavBar this}}
 <div class="logoSection">
     <h5>Logo</h5>
-    <img src={{logoSrc}} width="300px">
+    {{{restaurant.logo}}}
     <div id='backend_upload'>
     <form action="/photos/addLogo" enctype="multipart/form-data" method="post">
         <div class="form_line">

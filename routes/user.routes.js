@@ -17,7 +17,7 @@ router.get('/',(req,res)=>{
     BusinessModel.find()
         .then((restaurants)=>{
             let matches;
-            if(req.session.matches) { matches = req.session.matches;}
+            req.session.matches ?  matches = req.session.matches : matches = restaurants;
             res.render('user/search.hbs',{usertype, restaurants, matches});
         })
     
@@ -27,6 +27,7 @@ router.post('/search',(req,res)=>{
     const {city, cuisine} = req.body;
     if(city !== 'Choose...' && cuisine === 'Choose...'){
         BusinessModel.find({"location.city": city})
+            .populate('logo')
             .then((matches)=>{
                 req.session.matches = matches;
                 res.redirect('/user');
