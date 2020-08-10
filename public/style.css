@@ -44,7 +44,26 @@ body {
 }
 
 .logoSection {
-  border: 1px solid #42E497;
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid #42E497;
+}
+
+.card-section {
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #42E497;
+}
+
+.myRestaurant-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -53,6 +72,13 @@ body {
 
 .sign-form {
   margin: 50% 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.basicInfo-form {
+  margin: auto 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

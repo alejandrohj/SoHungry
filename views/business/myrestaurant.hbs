@@ -1,70 +1,100 @@
 {{> restaurantNavBar this}}
-<div class="card" style="width: 18rem;">
-  {{!-- <img src='{{this.logo}}' width="300px"> --}}
-  <img src={{restaurant.logo}} width="300">
-  <div class="card-body">
-    <h5 class="card-title">{{restaurant.userName}}</h5>
-    <p class="card-text">{{restaurant.description}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Capacity: {{restaurant.cuisine}}</li>
-    <li class="list-group-item">Restaurant capacity: {{restaurant.capacity}}</li>
-  </ul>
-</div>
-<hr>
-<div class="logoSection">
-    <h5>Edit logo:</h5>
-    <div id='backend_upload'>
-    <form action="/photos/addLogo" enctype="multipart/form-data" method="post">
-        <div class="form_line">
-        <label for="photo_title">Title:</label>
-        <div class="form_controls">
-            <input id="photo_title" name="title" size="30" type="text" value="Dish photo" />
+<article class="myRestaurant-all">
+    <section class="card-section">
+        <div class="card" style="width: 18rem;">
+        {{!-- <img src='{{this.logo}}' width="300px"> --}}
+        <img src={{restaurant.logo}} width="50" height="250" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{restaurant.userName}}</h5>
+            <p class="card-text">{{restaurant.description}}</p>
         </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Capacity: {{restaurant.cuisine}}</li>
+            <li class="list-group-item">Restaurant capacity: {{restaurant.capacity}}</li>
+        </ul>
         </div>
-        <div class="form_line">
-        <label for="photo_image">Image:</label>
-        <div class="form_controls">
-            <input id="photo_image" name="image" type="file" />
-            <input id="photo_image_cache" name="image_cache" type="hidden" />
-        </div>
-        </div>
-        <div class="form_line">
-        <div class="form_controls">
-            <input name="commit" type="submit" value="Submit Photo" />
-
-        </div>
-        </div>
-        <input id="direct" name="direct" type="hidden" />
-    </form></div>
-</div>
-<form action="business" method="POST">
-    <section>
-        <h4>Edit my information</h4>
-        {{!-- <img src="{{restaurant.logo}}" alt="logo"> --}}
+    </section>
+    <hr>
+    <div class="logoSection">
+        <h4>Edit my logo:</h4>
+        <div id='backend_upload'>
+        <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form'>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Title:</span>
+                </div>
+                <input type="text" name='title' id= 'photo_title' value='Dish photo' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="form_controls">
+                <input id="photo_image" name="image" type="file" />
+                <input id="photo_image_cache" name="image_cache" type="hidden"/>
+            </div>
+            </div>
+            <div class="form_line">
+            <div class="form_controls">
+                <input name="commit" type="submit" value="Submit Photo" class="btn btn-primary log-btn" />
+            </div>
+            </div>
+            <input id="direct" name="direct" type="hidden" />
+        </form></div>
+    </div>
+    <hr>
+    <form action="business" method="POST" class='basicInfo-form'>
+            <h4>Edit my information</h4>
         <article>
             <h6>Edit basic information:</h6>
-            <label for="userName">Name</label>
-            <input type="text" name='userName' id='userName' value='{{restaurant.userName}}'>
-            <label for="cuisine">Cuisine</label>
-            <input type="text" name='cuisine' id='cuisine' value='{{restaurant.cuisine}}'>
-            <label for="capacity">Capacity</label>
-            <input type="number" name='capacity' id='capacity' value='{{restaurant.capacity}}'>
-            <label for="description">Description</label>
-            <input type="text" name='description' id='description' value='{{restaurant.description}}'>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                </div>
+                <input type="text" name='userName' id= 'userName' value='{{restaurant.userName}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Cuisine</span>
+                </div>
+                <input type="text" name='cuisine' id='cuisine' value='{{restaurant.cuisine}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Capacity</span>
+                </div>
+                <input type="number" name='capacity' id='capacity' value='{{restaurant.capacity}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Description</span>
+                </div>
+                <input type="text" name='description' id='description' value='{{restaurant.description}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
         </article>
         <article>
-            <h6>Edit contact information</h6>
-            <label for="city">City</label>
-            <input type="text" name='city' id='city' value='{{restaurant.location.city}}'>
-            <label for="address">Adress</label>
-            <input type="text" name='address' id='address' value='{{restaurant.location.address}}'>
-            <label for="email">Email</label>
-            <input type="email" name='email' id='email' value='{{restaurant.email}}'>
+                <h6>Edit contact information:</h6>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">City</span>
+                </div>
+                <input type="text" name='city' id='city' value='{{restaurant.location.city}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Address</span>
+                    </div>
+                    <input type="text" name='address' id='address' value='{{restaurant.location.address}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                </div>
+                <input type="email" name='email' id='email' value='{{restaurant.email}}' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
         </article>
-    </section>
-    <button type="submit">Confirm changes</button>
-</form>
+        <button type="submit" class="btn btn-primary log-btn">Confirm changes</button>
+    </form>
+</article>
 
 
 
