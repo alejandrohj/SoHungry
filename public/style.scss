@@ -5,6 +5,9 @@ $tertiary-color: #4267E4;
 $warning-color: #F50D22;
 $backgroung-color: #F0EAEB;
 
+body{
+    background-color: $backgroung-color;
+}
 #inputState {
     margin-left: 10px;
 }
@@ -39,4 +42,27 @@ $backgroung-color: #F0EAEB;
 }
 .logoSection{
     border: 1px solid $secondary-color;
+}
+.btn-primary{
+    background-color: $tertiary-color;
+}
+.sign-form{
+    margin: 50% 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.choose-type{
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.log-btn{
+    margin:30px;
+}
+.input-group-text{
+    background-color: $secondary-color;
+}
+a{
+ color: $tertiary-color;   
 }

@@ -24,16 +24,16 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/menu',(req,res)=>{
-    let temporalImg
+    let temporalImg;
     if(req.session.dishPhoto){
         temporalImg = req.session.dishPhoto;
     }
+    console.log('temporal img:',req.session.dishPhoto)
     BusinessModel.findById({_id:req.session.loggedInUser._id})
         .populate({
             path:'menu'
         })
         .then((restaurantInfo)=>{
-            console.log(restaurantInfo)
             res.render('business/mymenu.hbs',{restaurantInfo, temporalImg})
         });
 });
@@ -63,7 +63,6 @@ router.post('/addDish',(req,res)=>{
         return;
     }
     else{
-        
         DishModel.create({name: name, price: price, description: description, photo: req.session.dishPhoto}) //We create the new dish
         .then((dishToReference)=>{
             BusinessModel.findById(req.session.loggedInUser._id) //Show the logged restaurant
