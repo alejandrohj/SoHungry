@@ -14,9 +14,6 @@ body{
 .addDishForm {
     margin-left: 20px;
 }
-.btn-primary{
-    margin-left: 5px;
-}
 .btn-yellow{
     background-color: $edit-color;
     border-color: $edit-color;
@@ -75,6 +72,26 @@ body{
     flex-direction: column;
     align-items: center;
 }
+.addDishForm{
+    display: flex;
+    flex-direction: column;
+}
+.imgSection{
+    margin: auto 30px;
+    display: flex;
+    flex-direction: column;
+}
+.imgSection img{
+    margin: auto 30px;
+}
+.imgSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
 .choose-type{
     width:100%;
     display: flex;
@@ -83,9 +100,43 @@ body{
 .log-btn{
     margin:30px;
 }
+.log-btn-addDish{
+
+}
 .input-group-text{
     background-color: $secondary-color;
 }
 a{
  color: $tertiary-color;   
 }
+.addNewDish{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-bottom: 2px solid $secondary-color;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.dishesInfo{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card{
+    margin: 10px;
+    align-items: center;
+}
+.dishForm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+h4{
+    margin-left: 30px;
+}
+
