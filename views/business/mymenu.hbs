@@ -60,6 +60,7 @@
         <div>{{errorMessage}}</div>
     {{/if}}
 </div>
+<h4>Your current dishes:</h4>
 <div class="dishesInfo">
     {{#each restaurantInfo.menu}}
         <div class="card mb-3" style="max-width: 550px;">
@@ -88,9 +89,10 @@
                                 </div>
                                 <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}" aria-describedby="basic-addon1">
                             </div>
-                            <button type="submit" class="btn btn-primary btn-yellow">Edit</button>
+                            <button type="submit" class="btn btn-primary btn-yellow mymenuEdit">Edit</button>
+                            <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red mymenuDelete">Delete</a>
                         </form>
-                        <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red">Delete</a>
+                        
                     </div>
                 </div>
             </div>

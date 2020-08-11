@@ -10,16 +10,6 @@ body {
   margin-left: 20px;
 }
 
-.btn-yellow {
-  background-color: #E4BF42;
-  border-color: #E4BF42;
-}
-
-.btn-red {
-  background-color: #F50D22;
-  border-color: #F50D22;
-}
-
 #navbar-hungry {
   background-color: #4267E4;
   color: #F0EAEB;
@@ -86,7 +76,6 @@ body {
 }
 
 .imgSection {
-  margin: auto 30px;
   display: flex;
   flex-direction: column;
 }
@@ -155,6 +144,130 @@ a {
 
 h4 {
   margin-left: 30px;
+  margin-top: 10px;
+}
+
+.btn {
+  color: #F0EAEB;
+}
+
+#searchForm {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 20px;
+}
+
+.search-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+#search-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-label {
+  background-color: #4AD770;
+  padding: 5px 10px;
+}
+
+.search-control {
+  width: 100% !important;
+  margin: 10px;
+}
+
+hr {
+  border: 3px dashed #4267E4;
+  background-color: #4AD770;
+}
+
+.card-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-body-search {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-tags {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #4267E4;
+}
+
+.card-description {
+  margin: 10px;
+  text-align: justify;
+}
+
+.card-myorders {
+  margin: 20px 0;
+}
+
+.myorder-item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.table-cell {
+  width: 100px;
+  text-align: center;
+}
+
+.card-header {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.card-footer {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.card-body-myorders {
+  background-color: #42E497;
+  display: flex;
+  align-items: center;
+}
+
+.myorders-table {
+  background-color: #42E497;
+  border: none;
+  justify-content: center;
+}
+
+.btn-yellow {
+  background-color: #E4BF42;
+  border-color: #E4BF42;
+}
+
+.btn-red {
+  background-color: #F50D22;
+  border-color: #F50D22;
+}
+
+.mymenuDelete {
+  margin-left: 150px;
+}
+
+.mymenuEdit {
+  margin-left: 20px;
+}
+
+.sectionItem {
+  margin: auto 30px;
 }
 
 /*# sourceMappingURL=style.css.map */

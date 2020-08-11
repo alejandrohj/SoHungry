@@ -14,14 +14,6 @@ body{
 .addDishForm {
     margin-left: 20px;
 }
-.btn-yellow{
-    background-color: $edit-color;
-    border-color: $edit-color;
-}
-.btn-red{
-    background-color: $warning-color;
-    border-color: $warning-color;
-}
 #navbar-hungry{
     background-color: $tertiary-color;
     color: $backgroung-color;
@@ -77,7 +69,7 @@ body{
     flex-direction: column;
 }
 .imgSection{
-    margin: auto 30px;
+    // margin: auto 30px;
     display: flex;
     flex-direction: column;
 }
@@ -107,7 +99,7 @@ body{
     background-color: $secondary-color;
 }
 a{
- color: $tertiary-color;   
+ color: $tertiary-color;
 }
 .addNewDish{
     display: flex;
@@ -138,5 +130,115 @@ a{
 }
 h4{
     margin-left: 30px;
+    margin-top: 10px;
 }
 
+.btn{
+    color: $backgroung-color
+}
+#searchForm{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 20px;
+}
+.search-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:40%;
+}
+#search-all{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;;
+}
+.search-label{
+    background-color: $primary-color;
+    padding:5px 10px;
+}
+.search-control{
+    width: 100% !important;
+    margin: 10px;
+}
+hr{
+    border: 3px dashed $tertiary-color;
+    background-color: $primary-color;
+}
+.card-search{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-body-search{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-tags{
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid $tertiary-color
+}
+
+.card-description{
+    margin:10px;
+    text-align: justify;
+}
+
+.card-myorders{
+    margin:20px 0;
+}
+
+.myorder-item{
+    display: flex;
+    justify-content: space-around;
+}
+
+.table-cell{
+    width: 100px;
+    text-align: center;
+}
+
+.card-header{
+    background-color: $tertiary-color;
+    color: $backgroung-color
+}
+.card-footer{
+    background-color: $tertiary-color;
+    color: $backgroung-color
+}
+
+.card-body-myorders{
+    background-color: $secondary-color;
+    display: flex;
+    align-items: center;
+
+}
+.myorders-table{
+    background-color: $secondary-color;
+    border: none;
+    justify-content: center;
+}
+.btn-yellow{
+    background-color: $edit-color;
+    border-color: $edit-color;
+}
+.btn-red{
+    background-color: $warning-color;
+    border-color: $warning-color;
+}
+.mymenuDelete{
+    margin-left: 150px;
+}
+.mymenuEdit{
+    margin-left: 20px;
+}
+.sectionItem{
+    margin: auto 30px
+}
