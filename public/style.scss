@@ -312,6 +312,12 @@ hr{
     width: 100%;
     height: 100%;
 }
+
+.table-and-total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 @media (min-width: 900px){
 
     .sign-form{
@@ -341,4 +347,8 @@ hr{
         width:300px;
     }
 
+}
+.table-orders-restaurant{
+    margin-left: 150px;
+    font-size: 1.3rem;
 }

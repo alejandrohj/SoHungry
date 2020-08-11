@@ -28,7 +28,9 @@ let orderSchema = new Schema({
     total: {
         type: Number,
         required: true,
-    }
+    },
+    table: Number
+    
 
 });
 
