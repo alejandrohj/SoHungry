@@ -193,6 +193,7 @@ hr {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 95%;
 }
 
 .card-body-search {
@@ -275,8 +276,8 @@ hr {
   margin: auto 30px;
 }
 
-.order-pic {
-  width: 100px;
+.image-container {
+  width: 100px !important;
   height: 100px;
 }
 
@@ -334,6 +335,51 @@ hr {
 
 .order-status-restaurant {
   font-size: 1.3rem;
+}
+
+.category-menu-display {
+  margin-right: 30px;
+}
+
+.card-pic {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .sign-form {
+    margin: 250px 50px;
+  }
+
+  .card-search {
+    width: 45%;
+  }
+
+  .searchMatches {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .order-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .dish {
+    width: 30%;
+  }
+
+  .order-buttons {
+    display: none;
+  }
+
+  .quantity {
+    width: 40px;
+  }
+
+  .card-body-search {
+    width: 300px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

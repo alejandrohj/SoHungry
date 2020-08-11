@@ -49,6 +49,18 @@
                 </div>
                 <input type="text" name='description' id= 'description' placeholder='Dish description here' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Category:</span>
+                </div>
+                <select id="inputState" class="form-control" name="category">
+                    <option selected>Choose...</option>
+                    <option>drink</option>
+                    <option>starter</option>
+                    <option>main</option>
+                    <option>dessert</option>
+                </select>
+            </div>
             <div>
                 <button type="submit" class="btn btn-primary log-btn-addDish">Add Dish</button>
             </div>
@@ -89,6 +101,18 @@
                                 </div>
                                 <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}" aria-describedby="basic-addon1">
                             </div>
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Category:</span>
+                            </div>
+                                <select id="inputState" class="form-control card-text category-menu-display" name="category">
+                                    <option selected>{{this.category}}</option>
+                                    <option>drink</option>
+                                    <option>starter</option>
+                                    <option>main</option>
+                                    <option>dessert</option>
+                                </select>
+                            </div><br>
                             <button type="submit" class="btn btn-primary btn-yellow mymenuEdit">Edit</button>
                             <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red mymenuDelete">Delete</a>
                         </form>

@@ -9,7 +9,11 @@ let dishSchema = new Schema({
     photo:{
         type: String
     },
-    description : String
+    description : String,
+    category:{
+        type: String,
+        enum: ['drink','starter','main','dessert']
+    }
 });
 
 module.exports = model('dish', dishSchema);
