@@ -77,6 +77,7 @@ body {
 }
 
 .imgSection {
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -131,7 +132,7 @@ a {
   flex-wrap: wrap;
 }
 
-.card {
+.DishCard {
   margin: 10px;
   align-items: center;
 }
@@ -309,6 +310,35 @@ hr {
 
 .description {
   font-size: 0.7em;
+}
+
+.imageToAdd {
+  margin: 5px;
+}
+
+.myRestCardItems {
+  text-align: center;
+}
+
+.restaurantsOrdersCardFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.order-served-btn {
+  background-color: #4AD770;
+  border-color: #42E497;
+  color: black;
+}
+
+.order-status-restaurant {
+  font-size: 1.3rem;
+}
+
+.category-menu-display {
+  margin-right: 30px;
 }
 
 .card-pic {

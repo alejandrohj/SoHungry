@@ -2,7 +2,7 @@
 <h4>Add a new dish to the Menu:</h4>
 <section class="addNewDish sticky">
     <div class="imgSection">
-        <div class="sectionItem">
+        <div class="sectionItem imageToAdd">
             <img src={{temporalImg}} width="200" height="200">
         </div>
         <div class="sectionItem">
@@ -49,6 +49,18 @@
                 </div>
                 <input type="text" name='description' id= 'description' placeholder='Dish description here' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Category:</span>
+                </div>
+                <select id="inputState" class="form-control" name="category">
+                    <option selected>Choose...</option>
+                    <option>drink</option>
+                    <option>starter</option>
+                    <option>main</option>
+                    <option>dessert</option>
+                </select>
+            </div>
             <div>
                 <button type="submit" class="btn btn-primary log-btn-addDish">Add Dish</button>
             </div>
@@ -63,7 +75,7 @@
 <h4>Your current dishes:</h4>
 <div class="dishesInfo">
     {{#each restaurantInfo.menu}}
-        <div class="card mb-3" style="max-width: 550px;">
+        <div class="card mb-3 DishCard" style="max-width: 550px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src={{this.photo}} class="card-img" alt="...">
@@ -89,6 +101,18 @@
                                 </div>
                                 <input name="description" type="text" class="form-control card-text" id="dishdescription" value= "{{this.description}}" aria-describedby="basic-addon1">
                             </div>
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Category:</span>
+                            </div>
+                                <select id="inputState" class="form-control card-text category-menu-display" name="category">
+                                    <option selected>{{this.category}}</option>
+                                    <option>drink</option>
+                                    <option>starter</option>
+                                    <option>main</option>
+                                    <option>dessert</option>
+                                </select>
+                            </div><br>
                             <button type="submit" class="btn btn-primary btn-yellow mymenuEdit">Edit</button>
                             <a href="/business/delete/{{this._id}}" class="btn btn-primary btn-red mymenuDelete">Delete</a>
                         </form>
