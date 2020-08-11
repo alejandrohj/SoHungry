@@ -1,11 +1,11 @@
 # Dependency directory
-#node_modules
+node_modules
 
 # Debug log from npm
 npm-debug.log
 
 # we are publishing .env file for learning purposes
 # but keep in mind - Environment Variables should NEVER be published ☝🏻
-# .env
+ .env
 
 .package-lock.json
