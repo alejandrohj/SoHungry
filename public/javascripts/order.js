@@ -6,7 +6,6 @@ function updateSubtotal(dish) {
   }
   
   function calculateAll() {
-    console.log('function activated')
     let dishList = document.querySelectorAll('.dish')
     dishList.forEach(dish=> {updateSubtotal(dish)})
     let subtotals= document.querySelectorAll('.subtotal span')
@@ -14,4 +13,24 @@ function updateSubtotal(dish) {
     subtotals.forEach(subtotal=>{total+=Number(subtotal.innerText)})
     document.getElementById('order-total').value=total;
   }
+
+  function add(btn){
+    btn.parentNode.parentNode.childNodes[1].childNodes[1].value++  
+  }
+  function take(btn){
+    btn.parentNode.parentNode.childNodes[1].childNodes[1].value--  
+  }
+
+
 setInterval(calculateAll, 1)
+
+window.addEventListener('load', ()=>{
+  let btnArr = document.querySelectorAll('.more-btn');
+  btnArr.forEach((addBtn)=>{
+    addBtn.addEventListener('click', ()=>add(addBtn));
+  })
+  let btnArr2 = document.querySelectorAll('.take-btn');
+  btnArr2.forEach((takeBtn)=>{
+    takeBtn.addEventListener('click', ()=>take(takeBtn));
+  })     
+})

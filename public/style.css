@@ -1,5 +1,6 @@
 body {
   background-color: #F0EAEB;
+  font-family: Montserrat, sans-serif;
 }
 
 #inputState {
@@ -214,6 +215,8 @@ hr {
 
 .card-myorders {
   margin: 20px 0;
+  background-color: #F0EAEB;
+  border: none;
 }
 
 .myorder-item {
@@ -222,7 +225,7 @@ hr {
 }
 
 .table-cell {
-  width: 100px;
+  width: 125px;
   text-align: center;
 }
 
@@ -240,6 +243,7 @@ hr {
   background-color: #42E497;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .myorders-table {
@@ -268,6 +272,42 @@ hr {
 
 .sectionItem {
   margin: auto 30px;
+}
+
+.order-pic {
+  width: 100px;
+  height: 100px;
+}
+
+.dish {
+  display: flex;
+  justify-content: space-between;
+  border: solid 2px #4267E4;
+  background-color: #42E497;
+  margin: 10px;
+}
+
+.quantity {
+  width: 20px;
+}
+
+.img-and-text {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.quantity-and-subtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.quantity-and-subtotal div {
+  margin: 5px;
+}
+
+.description {
+  font-size: 0.7em;
 }
 
 /*# sourceMappingURL=style.css.map */

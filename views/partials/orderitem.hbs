@@ -1,10 +1,19 @@
 <article class='dish'>
-    {{{this.photo}}}
-    <p>{{this.name}}</p>
-    <p>{{this.description}}</p>
-    <p class='price'>{{this.price}}</p>
-    <div>
-        <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
+    <div class='img-and-text'>
+        <img src='{{this.photo}}' class="card-img order-pic" alt="...">
+        <div class='order-dish-text'>
+            <div class='order-dish-data'>
+                <span>{{this.name}}</span>
+            </div>
+            <span class='price'>{{this.price}}</span>€       
+            <p class='description'>{{this.description}}</p>    
+        </div>
     </div>
-    <div class='subtotal'>Subtotal: <span>0</span>€</div>
+    <div class="quantity-and-subtotal">   
+        <div>
+            <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
+         </div>
+        <div class='subtotal' width='40px'><span>0</span>€</div>
+        <div class="btn-group-vertical"><input type="button" class='more-btn btn btn-secondary'value="+"><input type="button" class='take-btn btn btn-secondary' value="-"></div>
+    </div>
 </article>
