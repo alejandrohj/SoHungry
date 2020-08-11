@@ -2,7 +2,7 @@
 <h4>Add a new dish to the Menu:</h4>
 <section class="addNewDish sticky">
     <div class="imgSection">
-        <div class="sectionItem">
+        <div class="sectionItem imageToAdd">
             <img src={{temporalImg}} width="200" height="200">
         </div>
         <div class="sectionItem">
@@ -63,7 +63,7 @@
 <h4>Your current dishes:</h4>
 <div class="dishesInfo">
     {{#each restaurantInfo.menu}}
-        <div class="card mb-3" style="max-width: 550px;">
+        <div class="card mb-3 DishCard" style="max-width: 550px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src={{this.photo}} class="card-img" alt="...">

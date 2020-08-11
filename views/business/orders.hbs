@@ -1,17 +1,30 @@
 {{> restaurantNavBar this}}
 
 <h1>Orders</h1>
-<article>
 {{#each orders}}
-<h2>Order</h2>
-<div>{{this.user.userName}}</div>
-<div>{{this.status}}</div>
-{{#each order}}
-{{#if this.quantity}}
-<div>Dish: {{this.dishId.name}}</div>
-<div>Quantity: {{this.quantity}}</div>
-</article>
-{{/if}}
+    <article class='card card-myorders'>
+    <div class="card-header"><h2>{{this.user.userName}}</h2>
+    <span class="order-status-restaurant">{{this.status}}</span>
+    </div>
+    <div class="card-body card-body-myorders">
+    <table class='myorders-table'>
+        <tr class='myorder-item'><th class='table-cell'>Dish</th><th class='table-cell'>Price</th><th class='table-cell'>Quantity</th></tr>
+    {{#each order}}
+        {{#if this.quantity}}
+
+
+        <tr class='myorder-item'>
+        <td class='table-cell'>{{this.dishId.name}}</td>
+        <td class='table-cell'>{{this.dishId.price}}</td>
+        <td class='table-cell'>{{this.quantity}}</td>
+        </tr>
+        {{/if}}
 {{/each}}
-<form action="/business/orders/{{this._id}}" method="post"><button type="submit">Mark as done</button></form>
+</table>
+</div>
+<div class="card-footer restaurantsOrdersCardFooter">
+    <h4>Total: {{this.total}}</h4>
+    <form action="/business/orders/{{this._id}}" method="post"><button type="submit" class="btn-primary order-served-btn">Mark as done</button></form>
+</div>
+</article>
 {{/each}}

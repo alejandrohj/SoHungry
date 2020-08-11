@@ -8,9 +8,9 @@
             <h5 class="card-title">{{restaurant.userName}}</h5>
             <p class="card-text">{{restaurant.description}}</p>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Capacity: {{restaurant.cuisine}}</li>
-            <li class="list-group-item">Restaurant capacity: {{restaurant.capacity}}</li>
+        <ul class="list-group list-group-flush myRestCardItems">
+            <li class="list-group-item">{{restaurant.cuisine}}</li>
+            <li class="list-group-item">{{restaurant.location.city}}</li>
         </ul>
         </div>
     </section>
