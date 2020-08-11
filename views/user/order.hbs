@@ -2,19 +2,28 @@
 <form action="/user/order/{{id}}" method="post">
 <h1>Your order</h1>
 <div class='order-container'>
+{{!-- {{#each dish.category}} --}}
+
 {{#each dish}}
 
 {{> orderitem this}}
 
 {{/each}}
+{{!-- {{/each}} --}}
 </div>
 
+<div class='table-and-total'>
+    <div>
+        <label for="total">Total: </label>
+        <input type="number" id="order-total" name="total" value='0' readonly>
 
-<label for="total">Total: </label>
-<input type="number" id="order-total" name="total" value='0' readonly>
-
-<button type="submit" class="btn btn-primary">Place order</button>
-
+        <button type="submit" class="btn btn-primary">Place order</button>
+    </div>
+    <div>
+        <label for="table">Table: </label>
+        <input type="number" class='quantity' id="table" name="table" value='0'>
+    </div>
+</div>
 
 <script src="/javascripts/order.js" defer></script>
 </form>

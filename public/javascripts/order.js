@@ -2,7 +2,7 @@ function updateSubtotal(dish) {
     const price = Number(dish.querySelector('.price').innerText);
     const units = Number (dish.querySelector('.quantity').value);
     let subtotal = dish.querySelector('.subtotal span')
-    subtotal.innerText = Math.floor(price*units*100)/100;
+    subtotal.innerText = Number(price*units).toFixed(2);
   }
   
   function calculateAll() {
@@ -18,7 +18,9 @@ function updateSubtotal(dish) {
     btn.parentNode.parentNode.childNodes[1].childNodes[1].value++
   }
   function take(btn){
-    btn.parentNode.parentNode.childNodes[1].childNodes[1].value--  
+    if(btn.parentNode.parentNode.childNodes[1].childNodes[1].value>0){
+       btn.parentNode.parentNode.childNodes[1].childNodes[1].value--  
+    }
   }
 
 
