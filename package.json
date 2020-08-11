@@ -32,7 +32,6 @@
     "http-errors": "^1.8.0",
     "mongoose": "^5.9.27",
     "morgan": "^1.10.0",
-    "node": "^14.7.0",
     "nodemon": "^2.0.4",
     "serve-favicon": "^2.5.0"
   }
