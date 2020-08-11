@@ -61,7 +61,6 @@ router.post('/signup', (req, res) =>{
 
 router.post('/login', (req, res) => {
   const { userName, password, usertype} = req.body
-  console.log(req.body)
 
   if( !userName || !password){
       res.status(500).render('login.hbs', {errorMessage: 'Please enter all details'})
@@ -89,7 +88,10 @@ router.post('/login', (req, res) => {
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
       }
     })
-    .catch((err)=>console.log('Error is: ', err))
+    .catch((err)=>{
+      console.log('Error is: ', err)
+      res.status(500).render('login.hbs', {errorMessage: 'There is no user with that name in the customer category.'})
+    })
   }
     
   if(usertype==='business'){
@@ -106,7 +108,10 @@ router.post('/login', (req, res) => {
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
       }
     })
-    .catch((err)=>console.log('Error is: ', err))
+    .catch((err)=>{
+      console.log('Error is: ', err)
+      res.status(500).render('login.hbs', {errorMessage: 'There is no user with that name in the customer category.'})
+    })
   }
 }
 )
