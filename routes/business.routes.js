@@ -52,7 +52,11 @@ router.post('/', (req, res)=>{
 });
 
 router.post('/addDish',(req,res)=>{
-    const {name, price, description} = req.body;
+    const {name, price, description, category} = req.body;
+    if(!name || !price || !description || !category){
+        res.status(500).render('business/mymenu.hbs', {errorMessage: 'Please you must fill all the fields'})
+        return;
+    }
     const reg = new RegExp('^[0-9]+(\.\[0-9]{1,2})?$');
     if(!reg.test(price)) {
         res.status(500).render('business/mymenu.hbs', {errorMessage: 'Please enter a valid price: ..000.00'})
@@ -63,7 +67,7 @@ router.post('/addDish',(req,res)=>{
         return;
     }
     else{
-        DishModel.create({name: name, price: price, description: description, photo: req.session.dishPhoto}) //We create the new dish
+        DishModel.create({name: name, price: price, description: description, category: category, photo: req.session.dishPhoto}) //We create the new dish
         .then((dishToReference)=>{
             BusinessModel.findById(req.session.loggedInUser._id) //Show the logged restaurant
                 .then((currentBusiness)=>{
@@ -79,9 +83,9 @@ router.post('/addDish',(req,res)=>{
 });
 
 router.post('/editDish/:id',(req,res)=>{
-    const {name, price, description} = req.body;
+    const {name, price, description, category} = req.body;
     const dishId = req.params.id;
-    DishModel.findByIdAndUpdate(dishId, {name: name, price: price, description: description})
+    DishModel.findByIdAndUpdate(dishId, {name: name, price: price, description: description, category: category})
         .then(()=>{
             res.redirect('/business/menu')
         });
