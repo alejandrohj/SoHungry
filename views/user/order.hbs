@@ -1,12 +1,13 @@
 {{> customerNavBar this}}
 <form action="/user/order/{{id}}" method="post">
 <h1>Your order</h1>
-
+<div class='order-container'>
 {{#each dish}}
 
 {{> orderitem this}}
 
 {{/each}}
+</div>
 
 
 <label for="total">Total: </label>
