@@ -63,7 +63,7 @@
             <input type="number" class='quantity' id="table" name="table" value='0'> --}}
     </div>
     {{#each categories}}
-    <div class='category-title'>{{this}}</div>
+    <div class='category-title'><span>To </span><span>{{this}}</span><span>:</span></div>
             {{#each ../dish}}
                 {{#ifCond this.category ../this}}
                     {{> orderitem this}}

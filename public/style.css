@@ -454,4 +454,18 @@ hr {
   align-items: center;
 }
 
+.category-title {
+  font-size: 1.2rem;
+  font-style: oblique;
+  text-decoration: underline #4267E4;
+  color: #4267E4;
+  padding-top: 8px;
+  margin-top: 20px;
+  border-top: 3px solid #4AD770;
+}
+
+.category-title span {
+  margin-left: 5px;
+}
+
 /*# sourceMappingURL=style.css.map */

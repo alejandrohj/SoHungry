@@ -411,3 +411,17 @@ hr{
     flex-direction: row;
     align-items: center;
 }
+.category-title{
+    font-size: 1.2rem;
+    font-style: oblique;
+    text-decoration: underline $tertiary-color;
+    color: $tertiary-color;
+    padding-top: 8px;
+    margin-top: 20px;
+    // border-bottom: 1px solid $primary-color;
+    border-top: 3px solid $primary-color;
+}
+
+.category-title span{
+    margin-left: 5px;
+}
