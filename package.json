@@ -33,7 +33,12 @@
     "mongoose": "^5.9.27",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+<<<<<<< HEAD
     "serve-favicon": "^2.5.0",
     "stripe": "^8.84.0"
+=======
+    "qrcode": "^1.4.4",
+    "serve-favicon": "^2.5.0"
+>>>>>>> origin/alejandro
   }
 }

@@ -7,6 +7,7 @@ var cloudinary = require('cloudinary').v2;
 const stripe = require("stripe")("sk_test_51HFFbhD3z2xk99i7hBj9sXo4Vb6r5Ga9cBeecVQcnBOktdRe5QSqTo7zLZhMWtsLbXMQGNSTczhCznuhvHZyecga00e2voFJFq");
 
 
+
 if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
   console.warn('!! cloudinary config is undefined !!');
   console.warn('export CLOUDINARY_URL or set dotenv file');
@@ -14,6 +15,8 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
   console.log('cloudinary config:');
   console.log(cloudinary.config());
 }
+
+
 
 // Used to setthe favicon for our app
 // const favicon = require('serve-favicon');
@@ -72,6 +75,11 @@ app.use(session({
   })
 }));
 
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  next();
+});
+
 // Routers
 const indexRouter = require('./routes/index.routes');
 const userRouter = require('./routes/user.routes');
@@ -101,8 +109,15 @@ app.use('/photos', photosRouter);
 
 //Private routes
 /*Rest to privaticed each (business and customer) one of the other*/
+//Also stores the first url accessed in order to redirect after login
 app.use((req,res,next)=>{
-  req.session.loggedInUser ? next() : res.redirect("/"); 
+  if(req.session.loggedInUser){
+    next()
+  } 
+  else{
+    req.session.desiredUrl= req.originalUrl;
+    res.redirect("/"); 
+  }
 });
 
 

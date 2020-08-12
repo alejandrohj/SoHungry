@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
       if (match){
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        res.redirect('/user')
+        req.session.desiredUrl ? res.redirect(`${req.session.desiredUrl}`) : res.redirect('/user')
       }
       else{
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
@@ -102,7 +102,7 @@ router.post('/login', (req, res) => {
       if (match){
         req.session.loggedInUser = user;
         req.session.usertype = usertype;
-        res.redirect('/business')
+        req.session.desiredUrl ? res.redirect(`${req.session.desiredUrl}`) : res.redirect('/business')
       }
       else{
         res.status(500).render('login.hbs', {errorMessage: 'Password does not match.'});
