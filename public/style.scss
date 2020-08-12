@@ -280,6 +280,17 @@ hr{
     font-size: 0.7em;
 }
 
+#qrcode{
+    width: 200px;
+    height: 200px;
+}
+
+#qr-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
 .imageToAdd{
     margin: 5px;
 }

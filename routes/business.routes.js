@@ -4,6 +4,9 @@ const cloudinary = require('cloudinary').v2;
 const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
+var QRCode = require('qrcode');
+const session = require('express-session');
+
 
 //Set private routes for the business side
 router.use((req,res,next) => {
@@ -18,7 +21,7 @@ router.use((req,res,next) => {
 router.get('/',(req,res)=>{
     BusinessModel.find({_id: req.session.loggedInUser._id})
     .then((restaurant)=>{
-        res.render('business/myrestaurant.hbs', {restaurant: restaurant[0]});
+        res.render('business/myrestaurant.hbs', {restaurant: restaurant[0]})
     })
     .catch((err) => console.log ('Could not find restaurant. Error: ', err))
 });
@@ -126,5 +129,16 @@ router.get('/delete/:id',(req,res)=>{
                 }); 
         });          
 });
+// Restaurant gets its QRcode
+//Main page for businesses: profile page
+router.get('/qrcode',(req,res)=>{
+        QRCode.toDataURL(`https://so-hungry.herokuapp.com/user/order/${req.session.loggedInUser._id}`)
+            .then(url => {
+                res.render('business/qrcodes.hbs', {id: req.session.loggedInUser._id, url});
+            })
+            .catch(err => {
+              console.error(err)
+            })      
+    })
 
 module.exports = router;

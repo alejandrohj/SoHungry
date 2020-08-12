@@ -41,3 +41,5 @@ window.addEventListener('load', ()=>{
     takeBtn.addEventListener('click', ()=>take(takeBtn));
   })     
 })
+
+
