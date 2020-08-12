@@ -210,11 +210,6 @@ hr {
   border: 1px solid #4267E4;
 }
 
-.card-description {
-  margin: 10px;
-  text-align: justify;
-}
-
 .card-myorders {
   margin: 20px 0;
   background-color: #F0EAEB;
@@ -284,7 +279,7 @@ hr {
 .dish {
   display: flex;
   justify-content: space-between;
-  border: solid 2px #4267E4;
+  border-radius: 5px;
   background-color: #42E497;
   margin: 10px;
 }
@@ -348,8 +343,8 @@ hr {
 
 .table-and-total {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: start;
 }
 
 @media (min-width: 900px) {
@@ -369,10 +364,7 @@ hr {
   .order-container {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  .dish {
-    width: 30%;
+    margin-left: 10px;
   }
 
   .order-buttons {
@@ -390,6 +382,65 @@ hr {
 .table-orders-restaurant {
   margin-left: 150px;
   font-size: 1.3rem;
+}
+
+.form-user-order {
+  margin-left: 10px;
+}
+
+#user-order-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.card .order-dish-data {
+  margin: 5px;
+}
+
+.card .order-dish-data h5 {
+  text-align: center;
+}
+
+.border-btm {
+  border-bottom: 1px solid #4AD770;
+}
+
+.btn-green {
+  background-color: #39c926;
+  border: none;
+  margin-right: 10px;
+}
+
+.card-order-user {
+  background-color: #4267E4;
+  color: #F0EAEB;
+}
+
+.card-img-top {
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.description p {
+  margin: 2px auto 2px auto;
+}
+
+.quantity-and-subtotal {
+  margin-top: 5px;
+}
+
+#table {
+  width: 20px;
+  margin-left: 5px;
+}
+
+.select-table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
