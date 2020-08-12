@@ -3,6 +3,9 @@ const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 var cloudinary = require('cloudinary').v2;
+// This is your real test secret API key.
+const stripe = require("stripe")("sk_test_51HFFbhD3z2xk99i7hBj9sXo4Vb6r5Ga9cBeecVQcnBOktdRe5QSqTo7zLZhMWtsLbXMQGNSTczhCznuhvHZyecga00e2voFJFq");
+
 
 if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
   console.warn('!! cloudinary config is undefined !!');
@@ -25,6 +28,8 @@ require('./configs/db.config');
 
 const app = express();
 
+app.use(express.static("."));
+app.use(express.json());
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -64,6 +69,24 @@ const indexRouter = require('./routes/index.routes');
 const userRouter = require('./routes/user.routes');
 const businessRouter = require('./routes/business.routes');
 const photosRouter = require('./routes/photo.routes');
+
+const calculateOrderAmount = items => {
+  // Replace this constant with a calculation of the order's amount
+  // Calculate the order total on the server to prevent
+  // people from directly manipulating the amount on the client
+  return 1400;
+};
+app.post("/create-payment-intent", async (req, res) => {
+  const { items } = req.body;
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(items),
+    currency: "usd"
+  });
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
+});
 
 app.use('/', indexRouter);
 app.use('/photos', photosRouter);
