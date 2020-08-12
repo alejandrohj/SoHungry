@@ -17,6 +17,14 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
 
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
+
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false); //It is to avoid some mongoose functions deprecation
 
@@ -50,7 +58,7 @@ const MongoStore = require('connect-mongo')(session);
 app.use(session({
   secret: 'so-hungry',
   cookie: {
-    maxAge: 60*60*24*1000*7 // 1week
+    maxAge: 60*60*24*1000*7 // 1 week
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
@@ -67,9 +75,6 @@ const photosRouter = require('./routes/photo.routes');
 
 app.use('/', indexRouter);
 app.use('/photos', photosRouter);
-
-// const userRouter = require('./routes/user.routes');
-// const businessRouter = require('./routes/business.routes');
 
 //Private routes
 /*Rest to privaticed each (business and customer) one of the other*/

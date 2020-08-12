@@ -3,15 +3,15 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const {CustomerModel, BusinessModel} = require('../models/user.model');
 
-
+//Home route
 router.get('/', (req, res) => {
     res.render('login.hbs')
 });
-
+//Register route
 router.get('/signup', (req, res) => {
     res.render('signup.hbs')
 });
-
+//User sends register form
 router.post('/signup', (req, res) =>{
     const {userName, email, password, usertype} = req.body
     console.log(req.body)
@@ -58,7 +58,7 @@ router.post('/signup', (req, res) =>{
         })
     }
 })
-
+//User tries to log in
 router.post('/login', (req, res) => {
   const { userName, password, usertype} = req.body
 

@@ -5,7 +5,7 @@ const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
 
-
+//Set private routes for the business side
 router.use((req,res,next) => {
     if(req.session.usertype == 'business'){
         next();
@@ -14,7 +14,7 @@ router.use((req,res,next) => {
         res.redirect('/')
     }
 })
-
+//Main page for businesses: profile page
 router.get('/',(req,res)=>{
     BusinessModel.find({_id: req.session.loggedInUser._id})
     .then((restaurant)=>{
@@ -23,6 +23,7 @@ router.get('/',(req,res)=>{
     .catch((err) => console.log ('Could not find restaurant. Error: ', err))
 });
 
+//Page for filling the restaurant menu
 router.get('/menu',(req,res)=>{
     let temporalImg;
     if(req.session.dishPhoto){
@@ -38,11 +39,12 @@ router.get('/menu',(req,res)=>{
         });
 });
 
+//Log out logic for the business side nav bar
 router.get('/logout',(req,res)=>{
     req.session.destroy(res.redirect('/'))
-    
 });
 
+//Restaurant sends form to edit its profile information
 router.post('/', (req, res)=>{
     let {userName, cuisine, capacity, description, city, address, email} = req.body;
     let RestaurantID = req.session.loggedInUser._id;
@@ -51,6 +53,7 @@ router.post('/', (req, res)=>{
         .catch((err)=> console.log ('Could not upload the profile. Error is: ', err))
 });
 
+//Restaurant adds a dish to its menu
 router.post('/addDish',(req,res)=>{
     const {name, price, description, category} = req.body;
     if(!name || !price || !description || !category){
@@ -82,6 +85,7 @@ router.post('/addDish',(req,res)=>{
     }
 });
 
+//Restaurant edits a dish from its menu
 router.post('/editDish/:id',(req,res)=>{
     const {name, price, description, category} = req.body;
     const dishId = req.params.id;
@@ -91,18 +95,22 @@ router.post('/editDish/:id',(req,res)=>{
         });
 });
 
+//Orders history for the business side
 router.get('/orders', (req, res)=>{
     OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
         .then((orders)=>res.render('business/orders', {orders}))
         .catch((err)=> console.log('Could not get orders. Error: ', err))
 })
 
+//Restaurant marks an order as done
 router.post('/orders/:id', (req, res)=>{
     const orderId = req.params.id
     OrderModel.findByIdAndUpdate(orderId, {status: 'done'})
         .then(()=> res.redirect('/business/orders'))
         .catch((err)=> console.log('Could not update status. Error:', err))
 })
+
+//Restaurant deletes a dish from its menu
 router.get('/delete/:id',(req,res)=>{
     DishModel.findByIdAndDelete(req.params.id)
         .then(()=>{

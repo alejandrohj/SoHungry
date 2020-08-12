@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-const {CustomerModel, BusinessModel} = require('../models/user.model');
+const { BusinessModel} = require('../models/user.model');
 const OrderModel = require('../models/order.model');
 
+//Set private routes for the customers
 router.use((req,res,next) => {
     if(req.session.usertype == 'customer'){
         next();
@@ -12,6 +13,8 @@ router.use((req,res,next) => {
         res.redirect('/')
     }
 })
+
+//Main page for customers: search page
 router.get('/',(req,res)=>{
     let usertype = req.session.usertype;
     BusinessModel.find()
@@ -23,6 +26,7 @@ router.get('/',(req,res)=>{
     
 });
 
+//User searchs for a restaurant
 router.post('/search',(req,res)=>{
     const {city, cuisine} = req.body;
     if(city !== 'Choose...' && cuisine === 'Choose...'){
@@ -48,21 +52,27 @@ router.post('/search',(req,res)=>{
     }
 });
 
+//Log out logic for the customer nav bar
 router.get('/logout',(req,res)=>{
     req.session.destroy(()=>{
         res.redirect('/');
     })
 });
 
+//User clicks on a restaurant
 router.get ('/order/:id', (req, res)=>{
     BusinessModel.findById(req.params.id).populate('menu').populate('menu.dishId')
         .then((result)=>{
-            res.render ('user/order.hbs', {dish: result.menu, id: result._id})
+            let catOrder=['drink','starter','main','dessert']
+            let categories =[]
+            result.menu.forEach(element=> {if (!categories.includes(element.category)) categories[catOrder.indexOf(element.category)]=element.category}) //extract the categories of the dishes as an array of unique elements
+            res.render ('user/order.hbs', {dish: result.menu, id: result._id, categories})
         })
         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
 
 })
 
+//User places an order
 router.post ('/order/:id', (req, res)=>{
     let total = req.body.total
     let table = req.body.table
@@ -74,6 +84,7 @@ router.post ('/order/:id', (req, res)=>{
         .catch(err => console.log('Could not create order. Error is: '+ err))
 })
 
+//Order history for the customer side
 router.get('/myorders', (req, res)=>{
     OrderModel.find({user: req.session.loggedInUser._id}).populate('business').populate('order.dishId')
         .then((orders)=>{
