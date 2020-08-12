@@ -2,14 +2,20 @@
 <form action="/user/order/{{id}}" method="post">
 <h1>Your order</h1>
 <div class='order-container'>
-{{!-- {{#each dish.category}} --}}
 
-{{#each dish}}
+{{#each categories}}
+<div class='category-title'>{{this}}</div>
+    
+    
+        {{#each ../dish}}
+            {{#ifCond this.category ../this}}
+                 {{> orderitem this}}
+            {{/ifCond}}
+        {{/each}}
 
-{{> orderitem this}}
+    
 
 {{/each}}
-{{!-- {{/each}} --}}
 </div>
 
 <div class='table-and-total'>
