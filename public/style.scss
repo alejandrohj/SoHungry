@@ -4,6 +4,7 @@ $edit-color: #E4BF42;
 $tertiary-color: #4267E4;
 $warning-color: #F50D22;
 $backgroung-color: #F0EAEB;
+$btn-add: #39c926;
 
 
 body{
@@ -169,7 +170,7 @@ hr{
     display:flex;
     flex-direction: row;
     align-items: center;
-    width: 95%;
+    width: 100%;
 }
 
 .card-body-search{
@@ -184,11 +185,6 @@ hr{
     display: flex;
     justify-content: space-evenly;
     border: 1px solid $tertiary-color
-}
-
-.card-description{
-    margin:10px;
-    text-align: justify;
 }
 
 .card-myorders{
@@ -253,7 +249,8 @@ hr{
 .dish{
     display: flex;
     justify-content: space-between;
-    border: solid 2px $tertiary-color;
+    // border: solid 2px $tertiary-color;
+    border-radius: 5px;
     background-color: $secondary-color;
     margin: 10px;
 }
@@ -315,8 +312,8 @@ hr{
 
 .table-and-total{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
 }
 @media (min-width: 900px){
 
@@ -333,9 +330,10 @@ hr{
     .order-container{
         display:flex;
         flex-wrap: wrap;
+        margin-left: 10px;
     }
     .dish{
-        width:30%
+        // width:30%
     }
     .order-buttons{
         display: none;
@@ -351,4 +349,54 @@ hr{
 .table-orders-restaurant{
     margin-left: 150px;
     font-size: 1.3rem;
+}
+.form-user-order{
+    margin-left: 10px;
+}
+#user-order-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5px;
+}
+.card .order-dish-data{
+    margin: 5px;
+}
+.card .order-dish-data h5{
+    text-align:center;
+}
+.border-btm{
+    border-bottom: 1px solid $primary-color;
+}
+.btn-green{
+    background-color: $btn-add;
+    border: none;
+    margin-right: 10px;
+}
+.card-order-user{
+    background-color: $tertiary-color;
+    color: $backgroung-color;
+}
+.card-img-top{
+    padding: 5px;
+    border-radius: 6px;
+}
+.description{
+    p{
+
+        margin: 2px auto 2px auto;
+    }
+}
+.quantity-and-subtotal{
+    margin-top: 5px;
+}
+#table{
+    width: 20px;
+    margin-left: 5px;
+}
+.select-table{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
