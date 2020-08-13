@@ -4,7 +4,7 @@ const express = require('express');
 const logger = require('morgan');
 var cloudinary = require('cloudinary').v2;
 // This is your real test secret API key.
-const stripe = require("stripe")("sk_test_51HFFbhD3z2xk99i7hBj9sXo4Vb6r5Ga9cBeecVQcnBOktdRe5QSqTo7zLZhMWtsLbXMQGNSTczhCznuhvHZyecga00e2voFJFq");
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 
 
