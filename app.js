@@ -116,8 +116,7 @@ app.use((req,res,next)=>{
     next()
   } 
   else{
-    if(req.originalUrl != '/favicon.ico') req.session.desiredUrl= req.originalUrl;
-    console.log(req.originalUrl);
+    if (req.originalUrl != '/favicon.ico') req.session.desiredUrl= req.originalUrl;
     res.redirect("/"); 
   }
 });

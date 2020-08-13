@@ -5,7 +5,7 @@ const {CustomerModel, BusinessModel} = require('../models/user.model');
 
 //Home route
 router.get('/', (req, res) => {
-    res.render('login.hbs')
+    res.render('login.hbs',{errorMessage: 'Please register or log in before proceeding'})
 });
 //Register route
 router.get('/signup', (req, res) => {
@@ -70,7 +70,7 @@ router.post('/login', (req, res) => {
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
 
   if (!passReg.test(password)){
-    res.status(500).render('login.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    res.status(500).render('login.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
 

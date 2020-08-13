@@ -13,17 +13,28 @@
 
   <body>
     <!-- Display a payment form -->
-    <form id="payment-form">
-      <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-      <button id="submit">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay</span>
-      </button>
-      <p id="card-error" role="alert"></p>
-      <p class="result-message hidden">
-        Payment succeeded, see the result in your
-        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-      </p>
-    </form>
+    <div class="payments-view">
+      <img src="../public/images/logo.png" alt="" srcset="" id='logo'>
+      <div id='app-title'>
+          <h3>Make your paidment</h3>
+      </div>
+      <form id="payment-form">
+        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+        <button id="submit">
+          <div class="spinner hidden" id="spinner"></div>
+          <span id="button-text">Pay</span>
+        </button>
+        <p id="card-error" role="alert"></p>
+        <p class="result-message hidden">
+          Payment succeeded, see the result in your
+          <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+        </p>
+      </form>
+      <div class="instructions">
+        <p>Use the card nº: 4242 4242 4242 4242 to tests</p>
+        <p>Use a valid date</p>
+        <p>Use any CVC</p>
+      </div>
+    </div>
   </body>
 </html>

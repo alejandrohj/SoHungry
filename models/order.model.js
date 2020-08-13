@@ -32,6 +32,8 @@ let orderSchema = new Schema({
     table: Number
     
 
+},
+{ timestamps: {}
 });
 
 module.exports = model('order', orderSchema);

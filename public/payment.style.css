@@ -17,7 +17,7 @@
   
   form {
     width: 30vw;
-    min-width: 500px;
+    min-width: 450px;
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
       0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
@@ -170,4 +170,22 @@
       width: 80vw;
     }
   }
-  
+  .payments-view{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .instructions{
+    text-align: center;
+    margin-top: 10px;
+    color: #4267E4;
+  }
+  #logo{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+}
+h3{
+  color: #4267E4;
+}

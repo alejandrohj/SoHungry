@@ -4,7 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
-var QRCode = require('qrcode');
+const QRCode = require('qrcode');
 const session = require('express-session');
 
 
@@ -100,8 +100,19 @@ router.post('/editDish/:id',(req,res)=>{
 
 //Orders history for the business side
 router.get('/orders', (req, res)=>{
-    OrderModel.find({business: req.session.loggedInUser._id}).populate('user').populate('order.dishId')
-        .then((orders)=>res.render('business/orders', {orders}))
+    OrderModel.find({business: req.session.loggedInUser._id}).sort({createdAt: -1}).populate('user').populate('order.dishId')
+        .then((orders)=>{
+            let ages=[];
+            orders.forEach(order=> {
+                let orderAge = Math.floor((Date.now() - order.createdAt)/1000/60)
+                if (orderAge<1) ages.push('Just now')
+                if (orderAge>=1 && orderAge<60) ages.push(`${Math.floor(orderAge)} min ago`)
+                if (orderAge>60 && orderAge<60*2) ages.push (`${Math.floor(orderAge/60)} hour ago`)
+                if (orderAge>60*2 && orderAge<60*24) ages.push (`${Math.floor(orderAge/60)} hours ago`)
+                if (orderAge>60*24) ages.push('A long time ago')
+            })
+            res.render('business/orders', {orders, ages})
+        })
         .catch((err)=> console.log('Could not get orders. Error: ', err))
 })
 
@@ -130,7 +141,6 @@ router.get('/delete/:id',(req,res)=>{
         });          
 });
 // Restaurant gets its QRcode
-//Main page for businesses: profile page
 router.get('/qrcode',(req,res)=>{
         QRCode.toDataURL(`https://so-hungry.herokuapp.com/user/order/${req.session.loggedInUser._id}`)
             .then(url => {

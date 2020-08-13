@@ -73,7 +73,7 @@ var payWithCard = function(stripe, card, clientSecret) {
         showError(result.error.message);
       } else {
         // The payment succeeded!
-        orderComplete(result.paymentIntent.id);
+        orderComplete(result.paymentIntent.id)
       }
     })
     .then(()=>{

@@ -5,6 +5,7 @@
 {{#each orders}}
     <article class='card card-myorders'>
     <div class="card-header"><h2>{{this.business.userName}}</h2>
+    <div>{{lookup ../ages @index}}</div>
     <span>{{this.status}}</span>
     </div>
     <div class="card-body card-body-myorders">
@@ -12,12 +13,10 @@
         <tr class='myorder-item'><th class='table-cell'>Dish</th><th class='table-cell'>Price</th><th class='table-cell'>Quantity</th></tr>
     {{#each order}}
         {{#if this.quantity}}
-
-
         <tr class='myorder-item'>
-        <td class='table-cell'>{{this.dishId.name}}</td>
-        <td class='table-cell'>{{this.dishId.price}}</td>
-        <td class='table-cell'>{{this.quantity}}</td>
+            <td class='table-cell'>{{this.dishId.name}}</td>
+            <td class='table-cell'>{{this.dishId.price}}</td>
+            <td class='table-cell'>{{this.quantity}}</td>
         </tr>
         {{/if}}
 {{/each}}
