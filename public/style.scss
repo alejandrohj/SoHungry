@@ -511,14 +511,15 @@ hr{
 .card-search-user #search-order{
     margin-top: 10px;
     margin-bottom: 2px;
-    background-color: $primary-color;
+    background-color: $tertiary-color;
     // box-shadow: -2px 2px $secondary-color, -1px 1px $secondary-color, -0.5px 0.5px $secondary-color;
     // border: 1px solid $primary-color;
-    color: black;
 }
-
 .searchMatches .card-description{
     margin: 10px auto;
+}
+.searchMatches  .card-text{
+    font-size: 1.1rem;
 }
 
 

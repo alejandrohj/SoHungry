@@ -572,12 +572,15 @@ hr {
 .card-search-user #search-order {
   margin-top: 10px;
   margin-bottom: 2px;
-  background-color: #4AD770;
-  color: black;
+  background-color: #4267E4;
 }
 
 .searchMatches .card-description {
   margin: 10px auto;
+}
+
+.searchMatches .card-text {
+  font-size: 1.1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
