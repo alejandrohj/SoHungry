@@ -1,21 +1,38 @@
-<article class='dish'>
-    <div class='img-and-text'>
-        <div class='image-container'>
-            <img src='{{this.photo}}' class="card-img card-pic" alt="...">
-        </div>
-        <div class='order-dish-text'>
-            <div class='order-dish-data'>
-                <span>{{this.name}}</span>
+{{!-- <article class='dish'>
+    <div class="card" style="width: 18rem;">
+    <img src="{{this.photo}}" class="card-img-top" alt="{{this.name}} photo">
+    <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.description}}</p>
+        <b><h6>Price: {{this.price}}€</h6></b>
+    </div>
+        <div class="quantity-and-subtotal">   
+            <div>
+                <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
             </div>
-            <span class='price'>{{this.price}}</span>€       
-            <p class='description'>{{this.description}}</p>    
+            <div class='subtotal' width='40px'><span>0</span>€</div>
+            <div class="btn-group-vertical order-buttons"><input type="button" class='more-btn btn btn-secondary'value="+"><input type="button" class='take-btn btn btn-secondary' value="-"></div>
         </div>
     </div>
-    <div class="quantity-and-subtotal">   
-        <div>
-            <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
-         </div>
-        <div class='subtotal' width='40px'><span>0</span>€</div>
-        <div class="btn-group-vertical order-buttons"><input type="button" class='more-btn btn btn-secondary'value="+"><input type="button" class='take-btn btn btn-secondary' value="-"></div>
+</article> --}}
+<article class='dish'>
+    <div class='card card-order-user' style="width: 19rem;">
+        <div class='order-dish-data'>
+            <h5 class="border-btm">{{this.name}}</h5>
+            <span>Price: </span><span class='price'>{{this.price}}</span>€
+        </div>
+        <img src="{{this.photo}}" class="card-img-top" alt="{{this.name}} photo" height="200px">
+        <div class='card-body' id="user-order-body">
+            <div class='description border-btm'>
+                <p>{{this.description}}</p>    
+            </div>
+            <div class="quantity-and-subtotal">   
+                <div>
+                    <input type="number" name="{{this._id}}" id="{{this._id}}" class="quantity" value='0' min='0'>
+                </div>
+                <div class='subtotal' width='40px'><span>0</span>€</div>
+                <div class="btn-group-horizontal order-buttons"><input type="button" class='more-btn btn btn-secondary btn-green'value="+"><input type="button" class='take-btn btn btn-secondary btn-red' value="-"></div>
+            </div>
+        </div>
     </div>
 </article>

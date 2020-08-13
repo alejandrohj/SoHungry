@@ -13,6 +13,7 @@ function calculateAll() {
   let subtotals= document.querySelectorAll('.subtotal span')
   let total=0;
   subtotals.forEach(subtotal=>{total+=Number(subtotal.innerText)})
+  total = Number(total.toFixed(2));
   document.getElementById('order-total').value=total;
 }
 

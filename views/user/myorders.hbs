@@ -5,6 +5,7 @@
 {{#each orders}}
     <article class='card card-myorders'>
     <div class="card-header"><h2>{{this.business.userName}}</h2>
+    <div>{{lookup ../ages @index}}</div>
     <span>{{this.status}}</span>
     </div>
     <div class="card-body card-body-myorders">
