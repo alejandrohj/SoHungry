@@ -363,9 +363,28 @@ hr {
   justify-content: space-around;
 }
 
+#logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+#login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#app-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (min-width: 900px) {
   .sign-form {
-    margin: 250px 50px;
+    margin: 100px 50px;
   }
 
   .card-search {
@@ -396,6 +415,15 @@ hr {
 
   .card-body-search {
     width: 300px;
+  }
+
+  .input-group {
+    align-items: inherit;
+    width: 50%;
+  }
+
+  .input-group .form-control {
+    flex: 1 1;
   }
 }
 

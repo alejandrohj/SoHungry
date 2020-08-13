@@ -4,7 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const {BusinessModel} = require('../models/user.model');
 const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
-var QRCode = require('qrcode');
+const QRCode = require('qrcode');
 const session = require('express-session');
 
 
@@ -130,7 +130,6 @@ router.get('/delete/:id',(req,res)=>{
         });          
 });
 // Restaurant gets its QRcode
-//Main page for businesses: profile page
 router.get('/qrcode',(req,res)=>{
         QRCode.toDataURL(`https://so-hungry.herokuapp.com/user/order/${req.session.loggedInUser._id}`)
             .then(url => {
