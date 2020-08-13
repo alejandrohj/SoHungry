@@ -76,6 +76,7 @@ router.post ('/order/:id', (req, res)=>{
     let idArr = Object.keys(req.body).slice(1, -1);
     let quantArr = Object.values(req.body).slice(1, -1);
     const order = idArr.map((element, index)=>({'dishId': element, 'quantity': quantArr[index]}));
+    req.session.totalAmount = total;
     OrderModel.create({user: req.session.loggedInUser._id, business: req.params.id, order, status: 'pending', total, table})
         .then(()=>res.redirect ('/user/payment'))
         .catch(err => console.log('Could not create order. Error is: '+ err))

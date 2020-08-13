@@ -1,6 +1,8 @@
 {{> restaurantNavBar this}}
 
 <h1>Orders</h1>
+
+<section class='orders-container'>
 {{#each orders}}
     <article class='card card-myorders'>
     <div class="card-header"><h2>{{this.user.userName}}</h2>
@@ -29,3 +31,4 @@
     </article>
     <hr>
 {{/each}}
+</section>

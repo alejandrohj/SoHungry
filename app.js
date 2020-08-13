@@ -17,7 +17,7 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
 }
 
 // Used to setthe favicon for our app
-// const favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
@@ -39,14 +39,14 @@ const app = express();
 
 app.use(express.static("."));
 app.use(express.json());
+// setting up the middleware to let it know where to find the favicon icon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
-
-// setting up the middleware to let it know where to find the favicon icon
-// app.use(favicon(path.join(__dirname, 'public')));
 
 // Logging requests
 app.use(logger('dev'));
@@ -89,15 +89,15 @@ const calculateOrderAmount = items => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
   // people from directly manipulating the amount on the client
-  return 1400;
+  return items*100;
 };
 
 app.post("/create-payment-intent", async (req, res) => {
-  const { items } = req.body;
+  let items = req.session.totalAmount;
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
-    currency: "usd"
+    currency: "eur"
   });
   res.send({
     clientSecret: paymentIntent.client_secret

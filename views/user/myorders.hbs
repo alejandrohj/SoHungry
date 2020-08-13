@@ -1,7 +1,7 @@
 {{> customerNavBar this}}
 
 <h1>Your order history</h1>
-
+<section class='orders-container'>
 {{#each orders}}
     <article class='card card-myorders'>
     <div class="card-header"><h2>{{this.business.userName}}</h2>
@@ -28,4 +28,5 @@
 
 </article>
 {{/each}}
+</section>
 
