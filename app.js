@@ -16,7 +16,7 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
 
 
 // Used to setthe favicon for our app
-// const favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
@@ -36,14 +36,14 @@ require('./configs/db.config');
 
 const app = express();
 
+// setting up the middleware to let it know where to find the favicon icon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
-
-// setting up the middleware to let it know where to find the favicon icon
-// app.use(favicon(path.join(__dirname, 'public')));
 
 // Logging requests
 app.use(logger('dev'));
