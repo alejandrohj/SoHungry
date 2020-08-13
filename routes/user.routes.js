@@ -62,11 +62,11 @@ router.get('/logout',(req,res)=>{
 //User clicks on a restaurant
 router.get ('/order/:id', (req, res)=>{
     BusinessModel.findById(req.params.id).populate('menu').populate('menu.dishId')
-        .then((result)=>{
-            let catOrder=['drink','starter','main','dessert']
+        .then((restaurant)=>{
+            let catOrder=['starter','main','dessert','drink']
             let categories =[]
-            result.menu.forEach(element=> {if (!categories.includes(element.category)) categories[catOrder.indexOf(element.category)]=element.category}) //extract the categories of the dishes as an array of unique elements
-            res.render ('user/order.hbs', {dish: result.menu, id: result._id, categories})
+            restaurant.menu.forEach(element=> {if (!categories.includes(element.category)) categories[catOrder.indexOf(element.category)]=element.category}) //extract the categories of the dishes as an array of unique elements
+            res.render ('user/order.hbs', {dish: restaurant.menu, id: restaurant._id, categories, restaurant})
         })
         .catch(err => console.log('Could not find restaurant. Error is: '+ err))
 

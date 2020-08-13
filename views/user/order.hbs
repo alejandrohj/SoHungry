@@ -1,6 +1,6 @@
 {{> customerNavBar this}}
 <form action="/user/order/{{id}}" method="post" class="form-user-order">
-    <h1>Your order</h1>
+    <h1>Make your order in {{restaurant.userName}}</h1>
     <div class='order-container'>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -69,17 +69,18 @@
                     {{> orderitem this}}
                 {{/ifCond}}
             {{/each}}
-
+    <hr class="hr-categories">
     {{/each}}
 </div>
 
 <div class='table-and-total'>
-    <div>
-        <label for="total">Total: </label>
-        <input type="number" id="order-total" name="total" value='0' readonly>
-
-        <button type="submit" class="btn btn-primary">Place order</button>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Total:</span>
+        </div>
+        <input type="number" id="order-total" name="total" value='0' class="form-control" aria-describedby="basic-addon2" readonly>
     </div>
+    <button type="submit" class="btn btn-primary">Place order</button>
 </div>
 <script src="/javascripts/order.js" defer></script>
 </form>

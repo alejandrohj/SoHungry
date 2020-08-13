@@ -355,7 +355,8 @@ hr {
 .table-and-total {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 900px) {
@@ -459,13 +460,21 @@ hr {
   font-style: oblique;
   text-decoration: underline #4267E4;
   color: #4267E4;
-  padding-top: 8px;
-  margin-top: 20px;
-  border-top: 3px solid #4AD770;
+  padding-top: 0px;
+  margin-top: 5px;
 }
 
 .category-title span {
   margin-left: 5px;
+}
+
+#order-total {
+  width: 30px;
+}
+
+.hr-categories {
+  border: 2px solid #4AD770;
+  margin: 40px 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
