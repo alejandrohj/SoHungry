@@ -84,7 +84,7 @@ router.post ('/order/:id', (req, res)=>{
 
 //Order history for the customer side
 router.get('/myorders', (req, res)=>{
-    OrderModel.find({user: req.session.loggedInUser._id}, {}).sort({createdAt: -1}).populate('business').populate('order.dishId')
+    OrderModel.find({user: req.session.loggedInUser._id}).sort({createdAt: -1}).populate('business').populate('order.dishId')
         .then((orders)=>{
             let ages=[];
             orders.forEach(order=> {
@@ -95,7 +95,6 @@ router.get('/myorders', (req, res)=>{
                 if (orderAge>60*2 && orderAge<60*24) ages.push (`${Math.floor(orderAge/60)} hours ago`)
                 if (orderAge>60*24) ages.push('A long time ago')
             })
-            console.log (ages)
             res.render('user/myorders.hbs', {orders, ages})
         })
         .catch(err => console.log('Could not get orders. Error is: '+ err))
