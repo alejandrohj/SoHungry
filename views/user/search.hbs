@@ -32,21 +32,19 @@
     <div class="searchMatches">
         {{#if matches}}
             {{#each matches}}
-                <div class="card-search card">
-                    <div class='image-container'>
-                      <img src={{this.logo}} alt="Logo" class='card-pic'>
-                    </div>
-                    <div class="card-body-search card-body">
-                        <h5 class="card-title">{{this.userName}}</h5>
-                        <div class='card-tags'>                           
-                            <span class="card-text">{{this.location.city}}</span>
-                            <span>{{this.cuisine}}</span>
+                <div class="card mb-3 card-search-user" style="width: 19rem;">
+                    <img src={{this.logo}} alt="Logo" class='card-img' height="200px">
+                        <div class="card-body-search card-body card-img-overlay">
+                            <h5 class="card-title">{{this.userName}}</h5>
+                            <div class='card-tags'>                           
+                                <span id="card-search-location" class="card-text">{{this.location.city}}</span>
+                                <span>{{this.cuisine}}</span>
+                            </div>
+                            <div class='card-description'>                           
+                                <span>{{this.description}}</span>
+                            </div>
+                            <a href="/user/order/{{this._id}}" class="btn primary-btn" id="search-order">Order</a>
                         </div>
-                        <div class='card-description'>                           
-                            <span>{{this.description}}</span>
-                        </div>
-                        <a href="/user/order/{{this._id}}" class="btn btn-primary">Order</a>
-                    </div>
                 </div>
             {{/each}}
         {{/if}}
