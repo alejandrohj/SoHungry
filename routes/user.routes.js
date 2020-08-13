@@ -75,13 +75,12 @@ router.get ('/order/:id', (req, res)=>{
 //User places an order
 router.post ('/order/:id', (req, res)=>{
     let total = req.body.total
-    console.log(req.body)
     let table = req.body.table
     let idArr = Object.keys(req.body).slice(1, -1);
     let quantArr = Object.values(req.body).slice(1, -1);
     const order = idArr.map((element, index)=>({'dishId': element, 'quantity': quantArr[index]}));
     OrderModel.create({user: req.session.loggedInUser._id, business: req.params.id, order, status: 'pending', total, table})
-        .then(()=>res.redirect ('/user/myorders'))
+        .then(()=>res.redirect ('/user/payment'))
         .catch(err => console.log('Could not create order. Error is: '+ err))
 })
 
@@ -89,11 +88,20 @@ router.post ('/order/:id', (req, res)=>{
 router.get('/myorders', (req, res)=>{
     OrderModel.find({user: req.session.loggedInUser._id}).populate('business').populate('order.dishId')
         .then((orders)=>{
-            res.render('user/myorders.hbs', {orders})
+            //console.log(orders)
+            res.render('user/myorders.hbs',{orders})
         })
         .catch(err => console.log('Could get orders. Error is: '+ err))
+});
 
-
-})
+//pay path:
+router.get('/payment', (req, res)=>{
+    OrderModel.find({user: req.session.loggedInUser._id}).populate('business').populate('order.dishId')
+        .then((orders)=>{
+            res.render('checkout.hbs', {layout: false})
+            
+        })
+        .catch(err => console.log('Could get orders. Error is: '+ err))
+});
 
 module.exports = router;

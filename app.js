@@ -16,8 +16,6 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
   console.log(cloudinary.config());
 }
 
-
-
 // Used to setthe favicon for our app
 // const favicon = require('serve-favicon');
 
@@ -86,12 +84,14 @@ const userRouter = require('./routes/user.routes');
 const businessRouter = require('./routes/business.routes');
 const photosRouter = require('./routes/photo.routes');
 
+//#region PaymentFeature
 const calculateOrderAmount = items => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
   // people from directly manipulating the amount on the client
   return 1400;
 };
+
 app.post("/create-payment-intent", async (req, res) => {
   const { items } = req.body;
   // Create a PaymentIntent with the order amount and currency
@@ -103,6 +103,7 @@ app.post("/create-payment-intent", async (req, res) => {
     clientSecret: paymentIntent.client_secret
   });
 });
+//#endregion PaymentFeature
 
 app.use('/', indexRouter);
 app.use('/photos', photosRouter);
