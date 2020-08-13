@@ -33,7 +33,7 @@ body{
     font-style: oblique;
 }
 .logoSection{
-    margin: 20px 30px;
+    margin: 20px 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,7 +202,6 @@ hr{
     width: 125px;
     text-align: center;
 }
-
 .card-header{
     background-color: $tertiary-color;
     color: $backgroung-color
@@ -211,13 +210,11 @@ hr{
     background-color: $tertiary-color;
     color: $backgroung-color
 }
-
 .card-body-myorders{
     background-color: $secondary-color;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .myorders-table{
     background-color: $secondary-color;
@@ -249,7 +246,6 @@ hr{
 .dish{
     display: flex;
     justify-content: space-between;
-    // border: solid 2px $tertiary-color;
     border-radius: 5px;
     background-color: $secondary-color;
     margin: 10px;
@@ -343,6 +339,19 @@ hr{
     align-items: center;
 }
 
+.logoSection .input-group{
+    width: 80%;
+}
+
+
+#photo-image{
+    width:80%;
+}
+
+.logoSection .form_controls{
+    width: 60%;
+}
+
 @media (min-width: 900px){
 
     .sign-form{
@@ -360,9 +369,6 @@ hr{
         flex-wrap: wrap;
         margin-left: 10px;
     }
-    .dish{
-        // width:30%
-    }
     .order-buttons{
         display: none;
     }
@@ -378,6 +384,9 @@ hr{
     }
     .sign-form .input-group .form-control{
         flex: 1 1;
+    }
+    .logoSection .form_controls{
+        width: 60%;
     }
 
 }
@@ -446,3 +455,5 @@ hr{
 .orders-container hr{
     display:none;
 }
+
+
