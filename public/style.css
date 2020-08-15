@@ -90,14 +90,6 @@ hr {
   font-size: 1.5em;
 }
 
-.logoSection {
-  margin: 20px 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: 2px solid #55e9bc;
-}
-
 .myRestaurant-all {
   display: flex;
   flex-direction: column;
@@ -121,9 +113,27 @@ hr {
 .myRestaurant-all .card-section .card .card-text {
   font-size: 0.8em;
 }
-.myRestaurant-all #backend_upload .choose-file {
+.myRestaurant-all .card-section .logoSection {
+  margin: 20px 5px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.myRestaurant-all .card-section .logoSection #backend_upload .profile-upload-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 15px auto;
+}
+.myRestaurant-all .card-section .logoSection #backend_upload #photo_image {
+  width: 250px;
+}
+.myRestaurant-all .input-group-prepend {
+  width: 121px;
+}
+.myRestaurant-all .input-group-prepend .input-group-text {
+  background-color: #55e9bc;
+  width: inherit;
 }
 
 #inputState {
@@ -204,7 +214,7 @@ hr {
   width: 90%;
   display: flex;
   justify-content: space-evenly;
-  margin: 30px 20px;
+  margin: 15px 20px 5px 20px;
 }
 
 .search-group {
@@ -462,6 +472,40 @@ hr {
   border: 2px solid #55e9bc;
   margin: 40px 0px;
 }
+.hr-categories .sign-form {
+  margin: 100px 50px;
+}
+.hr-categories .card-search {
+  width: 45%;
+}
+.hr-categories .order-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+.hr-categories .order-buttons {
+  display: none;
+}
+.hr-categories .quantity {
+  width: 30px;
+}
+.hr-categories .card-body-search {
+  width: 300px;
+}
+.hr-categories .sign-form .input-group {
+  align-items: inherit;
+  width: 50%;
+}
+.hr-categories .sign-form .input-group .form-control {
+  flex: 1 1;
+}
+.hr-categories .logoSection .form_controls {
+  width: 60%;
+}
+.hr-categories .card-myorders {
+  width: 30%;
+  margin: 10px 10px;
+}
 
 .orders-container {
   display: flex;
@@ -520,6 +564,59 @@ hr {
   margin: 2px auto 2px auto;
 }
 
+.card-search-location {
+  border: 1px solid #F0EAEB;
+}
+
+.card-search-user {
+  background-color: #BC55E9;
+  color: #F0EAEB;
+}
+
+.searchMatches {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.searchMatches .card-tags {
+  border: 1px solid #F0EAEB;
+}
+
+.searchMatches .card-title {
+  margin: 10px auto;
+  font-size: 1.8rem;
+}
+
+.searchMatches .card-search-user .card-img {
+  -webkit-filter: brightness(0.4);
+  filter: brightness(0.4);
+}
+
+.searchMatches .card-body {
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 5px;
+}
+
+.searchMatches .card-search-user {
+  margin: 10px;
+}
+
+.card-search-user #search-order {
+  margin-top: 10px;
+  margin-bottom: 2px;
+  background-color: #BC55E9;
+}
+
+.searchMatches .card-description {
+  margin: 10px auto;
+}
+
+.searchMatches .card-text {
+  font-size: 1.1rem;
+}
+
 @media (min-width: 900px) {
   .sign-form {
     margin: 100px 50px;
@@ -534,6 +631,15 @@ hr {
 
   .navbar-title {
     margin: auto 15px;
+  }
+
+  .myRestaurant-all {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .myRestaurant-all .card-section {
+    border-bottom: none;
   }
 
   .card-search {

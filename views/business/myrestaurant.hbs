@@ -13,11 +13,10 @@
             <li class="list-group-item">{{restaurant.location.city}}</li>
         </ul>
         </div>
-    </section>
-    <div class="logoSection">
+        <div class="logoSection">
         <h4>Edit profile picture</h4>
         <div id='backend_upload'>
-        <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form'>
+        <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form profile-upload-input'>
             <div class="form_controls choose-file">
                 <input id="photo_image" name="image" type="file" />
                 <input id="photo_image_cache" name="image_cache" type="hidden"/>
@@ -31,10 +30,12 @@
             <input id="direct" name="direct" type="hidden" />
         </form></div>
     </div>
+    </section>
+    
     <form action="business" method="POST" class='basicInfo-form'>
             <h4>Edit my information</h4>
         <article>
-            <h6>Edit basic information:</h6>
+            <h6>Basic information:</h6>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Name</span>
@@ -64,7 +65,7 @@
             </div>
         </article>
         <article>
-                <h6>Edit contact information:</h6>
+                <h6>Contact information:</h6>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">City</span>
