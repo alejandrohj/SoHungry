@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const bcryptjs = require('bcryptjs');
 const cloudinary = require('cloudinary').v2;
 var multipart = require('connect-multiparty');
 const Photo = require('../models/photo.model');
-const {CustomerModel, BusinessModel} = require('../models/user.model');
+const { BusinessModel } = require('../models/user.model');
 
 const multipartMiddleware = multipart();
 
@@ -13,21 +12,21 @@ router.post('/addLogo',multipartMiddleware,(req,res)=>{
   // and from there to Cloudinary servers.
   // The upload metadata (e.g. image size) is then added to the photo  model (photo.image)
   // and then saved to the database.
-    console.log('body:',req.body)
+    // console.log('body:',req.body)
   // file was not uploaded redirecting to upload
   if (!req.files.image) {
     res.redirect('/business');
     return;
   }
 
-  var photo = new Photo(req.body);
+  let photo = new Photo(req.body);
   // Get temp file path
-  var imageFile = req.files.image.path;
+  let imageFile = req.files.image.path;
   // Upload file to Cloudinary
-  cloudinary.uploader.upload(imageFile, { tags: 'express_sample' })
+  cloudinary.uploader.upload(imageFile)
     .then(function (image) {
-      console.log('** file uploaded to Cloudinary service');
-      console.dir(image);
+      // console.log('** file uploaded to Cloudinary service');
+      // console.dir(image);
       photo.image = image;
       // Save photo with image metadata
       return photo.save();
@@ -35,7 +34,7 @@ router.post('/addLogo',multipartMiddleware,(req,res)=>{
     .then(function () {
         let img = cloudinary.image(photo.image.public_id);
         let imgSrc = img.slice(10,(img.length-4));
-        console.log(imgSrc);
+        // console.log(imgSrc);
         BusinessModel.findByIdAndUpdate(req.session.loggedInUser._id, {logo: imgSrc})
         .then((response)=>{
             res.redirect('/business')

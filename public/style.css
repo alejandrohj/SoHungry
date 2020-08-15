@@ -26,8 +26,8 @@ hr {
   border-color: #55e9bc;
 }
 .btn-primary:active {
-  background-color: #55e9bc;
-  border-color: #55e9bc;
+  background-color: #55e9bc !important;
+  border-color: #55e9bc !important;
 }
 .btn-primary:focus {
   background-color: #55e9bc;
@@ -90,14 +90,6 @@ hr {
   font-size: 1.5em;
 }
 
-#inputState {
-  margin-left: 10px;
-}
-
-.addDishForm {
-  margin-left: 20px;
-}
-
 .logoSection {
   margin: 20px 5px;
   display: flex;
@@ -121,6 +113,25 @@ hr {
 }
 .myRestaurant-all .card-section .card {
   width: 18rem;
+}
+.myRestaurant-all .card-section .card .card-title {
+  border-bottom: 1px solid #55e9bc;
+  text-align: center;
+}
+.myRestaurant-all .card-section .card .card-text {
+  font-size: 0.8em;
+}
+.myRestaurant-all #backend_upload .choose-file {
+  display: flex;
+  justify-content: center;
+}
+
+#inputState {
+  margin-left: 10px;
+}
+
+.addDishForm {
+  margin-left: 20px;
 }
 
 .basicInfo-form {

@@ -14,18 +14,11 @@
         </ul>
         </div>
     </section>
-    <hr>
     <div class="logoSection">
-        <h4>Edit my logo:</h4>
+        <h4>Edit profile picture</h4>
         <div id='backend_upload'>
         <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form'>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Title:</span>
-                </div>
-                <input type="text" name='title' id= 'photo_title' value='Dish photo' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="form_controls">
+            <div class="form_controls choose-file">
                 <input id="photo_image" name="image" type="file" />
                 <input id="photo_image_cache" name="image_cache" type="hidden"/>
             </div>
@@ -38,7 +31,6 @@
             <input id="direct" name="direct" type="hidden" />
         </form></div>
     </div>
-    <hr>
     <form action="business" method="POST" class='basicInfo-form'>
             <h4>Edit my information</h4>
         <article>

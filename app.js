@@ -1,11 +1,16 @@
 require('dotenv').config();
+require('./configs/db.config');
 const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 var cloudinary = require('cloudinary').v2;
-// This is your real test secret API key.
 const stripe = require("stripe")(process.env.STRIPE_KEY);
-
+const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const hbs = require('hbs');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 
 if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
@@ -16,12 +21,6 @@ if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
   console.log(cloudinary.config());
 }
 
-// Used to setthe favicon for our app
-const favicon = require('serve-favicon');
-
-const cookieParser = require('cookie-parser');
-const hbs = require('hbs');
-
 hbs.registerHelper('ifCond', function(v1, v2, options) {
   if(v1 === v2) {
     return options.fn(this);
@@ -29,11 +28,11 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
-const mongoose = require('mongoose');
+
 mongoose.set('useFindAndModify', false); //It is to avoid some mongoose functions deprecation
 
 // Database connection
-require('./configs/db.config');
+
 
 const app = express();
 
@@ -58,8 +57,7 @@ app.use(express.urlencoded({ extended: true }));
 // Cookies and sessions
 app.use(cookieParser());
 
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+
  
 app.use(session({
   secret: 'so-hungry',
