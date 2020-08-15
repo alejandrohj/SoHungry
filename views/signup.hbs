@@ -1,24 +1,32 @@
 <form action="/signup" method="post" class='sign-form'>
 
+<header id='login-header'>
+    <img src="images/logo.png" alt="" srcset="" class='logo'>
+    <div id='app-title'>
+        <h2>We are So Hungry!</h2>
+        <h5>Log in</h5>
+    </div>
+</header>
+
 <div class="input-group mb-3">
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Name</span>
     </div>
-    <input type="text" name='userName' id= 'userName' placeholder='Please enter your name' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+    <input type="text" name='userName' id= 'userName' placeholder='Enter your name' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group mb-3">
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon2">Email</span>
     </div>
-    <input  type="email" name='email' id= 'email' placeholder='Please enter your email' class="form-control" aria-label="Username" aria-describedby="basic-addon2">
+    <input  type="email" name='email' id= 'email' placeholder='Enter your email' class="form-control" aria-label="Username" aria-describedby="basic-addon2">
 </div>
 
 <div class="input-group mb-3">
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon2">Password</span>
     </div>
-    <input type="password" name='password' id= 'password' placeholder='Please enter your password' class="form-control" aria-label="Username" aria-describedby="basic-addon2">
+    <input type="password" name='password' id= 'password' placeholder='Enter your password' class="form-control" aria-label="Username" aria-describedby="basic-addon2">
 </div>
 
 <div class='choose-type'>
@@ -37,7 +45,7 @@
 </div>
 <button type="submit" class="btn btn-primary log-btn">Register</button>
 {{#if errorMessage}}
-<div>{{errorMessage}}</div>
+<div class='login-error'>{{errorMessage}}</div>
 {{/if}}
 </form>
 

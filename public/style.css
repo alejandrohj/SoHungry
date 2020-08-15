@@ -3,6 +3,93 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
+a {
+  color: #BC55E9;
+}
+
+h4 {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+hr {
+  border: 3px dashed #BC55E9;
+  background-color: #55e9bc;
+}
+
+.btn-primary {
+  background-color: #BC55E9;
+  border-color: #BC55E9;
+}
+.btn-primary:hover {
+  background-color: #55e9bc;
+  border-color: #55e9bc;
+}
+.btn-primary:active {
+  background-color: #55e9bc;
+  border-color: #55e9bc;
+}
+.btn-primary:focus {
+  background-color: #55e9bc;
+  border-color: #55e9bc;
+}
+
+.sign-form {
+  margin: 30% 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sign-form .logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+}
+.sign-form .input-group-prepend {
+  width: 105px;
+}
+.sign-form .input-group-prepend .input-group-text {
+  background-color: #55e9bc;
+  width: inherit;
+}
+.sign-form .choose-type {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.sign-form .log-btn {
+  margin: 30px;
+}
+.sign-form .login-error {
+  text-align: center;
+}
+
+#navbar-hungry {
+  background-image: linear-gradient(135deg, #BC55E9, #55e9bc);
+  color: #F0EAEB;
+}
+#navbar-hungry .navbar-toggler {
+  background-color: transparent;
+}
+#navbar-hungry .nav-link {
+  color: #F0EAEB;
+}
+#navbar-hungry .btn-logOut {
+  list-style: none;
+  color: #BC55E9;
+  font-style: oblique;
+}
+#navbar-hungry .nav-item {
+  margin: auto 10px;
+}
+#navbar-hungry .logout-container {
+  display: flex;
+  justify-content: flex-end;
+}
+#navbar-hungry .navbar-title {
+  font-size: 1.5em;
+}
+
 #inputState {
   margin-left: 10px;
 }
@@ -11,40 +98,12 @@ body {
   margin-left: 20px;
 }
 
-#navbar-hungry {
-  background-color: #4267E4;
-  color: #F0EAEB;
-}
-
-.navbar-toggler {
-  background-color: #4AD770;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: #F0EAEB;
-}
-
-#btn-logOut {
-  list-style: none;
-  color: #F0EAEB;
-  font-style: oblique;
-}
-
 .logoSection {
   margin: 20px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 2px solid #42E497;
-}
-
-.card-section {
-  margin: 20px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #42E497;
+  border-bottom: 2px solid #55e9bc;
 }
 
 .myRestaurant-all {
@@ -52,16 +111,16 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
-.btn-primary {
-  background-color: #4267E4;
-}
-
-.sign-form {
-  margin: 50% 30px;
+.myRestaurant-all .card-section {
+  margin: 20px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #55e9bc;
+}
+.myRestaurant-all .card-section .card {
+  width: 18rem;
 }
 
 .basicInfo-form {
@@ -95,29 +154,11 @@ body {
   margin-bottom: 10px;
 }
 
-.choose-type {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.log-btn {
-  margin: 30px;
-}
-
-.input-group-text {
-  background-color: #42E497;
-}
-
-a {
-  color: #4267E4;
-}
-
 .addNewDish {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  border-bottom: 2px solid #42E497;
+  border-bottom: 2px solid #55e9bc;
   padding-bottom: 20px;
   justify-content: center;
   align-items: center;
@@ -142,11 +183,6 @@ a {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-}
-
-h4 {
-  margin-left: 30px;
-  margin-top: 10px;
 }
 
 .btn {
@@ -175,18 +211,13 @@ h4 {
 }
 
 .search-label {
-  background-color: #4AD770;
+  background-color: #55e9bc;
   padding: 5px 10px;
 }
 
 .search-control {
   width: 100% !important;
   margin: 10px;
-}
-
-hr {
-  border: 3px dashed #4267E4;
-  background-color: #4AD770;
 }
 
 .card-search {
@@ -207,7 +238,7 @@ hr {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid #4267E4;
+  border: 1px solid #BC55E9;
 }
 
 .card-myorders {
@@ -227,24 +258,24 @@ hr {
 }
 
 .card-header {
-  background-color: #4267E4;
+  background-color: #BC55E9;
   color: #F0EAEB;
 }
 
 .card-footer {
-  background-color: #4267E4;
+  background-color: #BC55E9;
   color: #F0EAEB;
 }
 
 .card-body-myorders {
-  background-color: #42E497;
+  background-color: #55e9bc;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .myorders-table {
-  background-color: #42E497;
+  background-color: #55e9bc;
   border: none;
   justify-content: center;
 }
@@ -280,7 +311,7 @@ hr {
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
-  background-color: #42E497;
+  background-color: #55e9bc;
   margin: 10px;
 }
 
@@ -334,8 +365,8 @@ hr {
 }
 
 .order-served-btn {
-  background-color: #4AD770;
-  border-color: #42E497;
+  background-color: #55e9bc;
+  border-color: #55e9bc;
   color: black;
 }
 
@@ -357,12 +388,6 @@ hr {
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
-}
-
-#logo {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 50px;
 }
 
 #login-header {
@@ -390,9 +415,114 @@ hr {
   width: 60%;
 }
 
+.quantity-and-subtotal {
+  margin-top: 5px;
+}
+
+#table {
+  width: 20px;
+  margin-left: 5px;
+}
+
+.select-table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-style: oblique;
+  text-decoration: underline #BC55E9;
+  color: #BC55E9;
+  padding-top: 0px;
+  margin-top: 5px;
+}
+
+.category-title span {
+  margin-left: 5px;
+}
+
+#order-total {
+  width: 30px;
+}
+
+.hr-categories {
+  border: 2px solid #55e9bc;
+  margin: 40px 0px;
+}
+
+.orders-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orders-container hr {
+  display: none;
+}
+
+.table-orders-restaurant {
+  margin-left: 150px;
+  font-size: 1.3rem;
+}
+
+.form-user-order {
+  margin-left: 10px;
+}
+
+#user-order-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.card .order-dish-data {
+  margin: 5px;
+}
+.card .order-dish-data h5 {
+  text-align: center;
+}
+
+.border-btm {
+  border-bottom: 1px solid #55e9bc;
+}
+
+.btn-green {
+  background-color: #39c926;
+  border: none;
+  margin-right: 10px;
+}
+
+.card-order-user {
+  background-color: #BC55E9;
+  color: #F0EAEB;
+}
+
+.card-img-top {
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.description p {
+  margin: 2px auto 2px auto;
+}
+
 @media (min-width: 900px) {
   .sign-form {
     margin: 100px 50px;
+  }
+  .sign-form .input-group {
+    align-items: inherit;
+    width: 50%;
+  }
+  .sign-form .input-group .form-control {
+    flex: 1 1;
+  }
+
+  .navbar-title {
+    margin: auto 15px;
   }
 
   .card-search {
@@ -422,15 +552,6 @@ hr {
     width: 300px;
   }
 
-  .sign-form .input-group {
-    align-items: inherit;
-    width: 50%;
-  }
-
-  .sign-form .input-group .form-control {
-    flex: 1 1;
-  }
-
   .logoSection .form_controls {
     width: 60%;
   }
@@ -439,100 +560,6 @@ hr {
     width: 30%;
     margin: 10px 10px;
   }
-}
-.table-orders-restaurant {
-  margin-left: 150px;
-  font-size: 1.3rem;
-}
-
-.form-user-order {
-  margin-left: 10px;
-}
-
-#user-order-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 5px;
-}
-
-.card .order-dish-data {
-  margin: 5px;
-}
-
-.card .order-dish-data h5 {
-  text-align: center;
-}
-
-.border-btm {
-  border-bottom: 1px solid #4AD770;
-}
-
-.btn-green {
-  background-color: #39c926;
-  border: none;
-  margin-right: 10px;
-}
-
-.card-order-user {
-  background-color: #4267E4;
-  color: #F0EAEB;
-}
-
-.card-img-top {
-  padding: 5px;
-  border-radius: 6px;
-}
-
-.description p {
-  margin: 2px auto 2px auto;
-}
-
-.quantity-and-subtotal {
-  margin-top: 5px;
-}
-
-#table {
-  width: 20px;
-  margin-left: 5px;
-}
-
-.select-table {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.category-title {
-  font-size: 1.2rem;
-  font-style: oblique;
-  text-decoration: underline #4267E4;
-  color: #4267E4;
-  padding-top: 0px;
-  margin-top: 5px;
-}
-
-.category-title span {
-  margin-left: 5px;
-}
-
-#order-total {
-  width: 30px;
-}
-
-.hr-categories {
-  border: 2px solid #4AD770;
-  margin: 40px 0px;
-}
-
-.orders-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.orders-container hr {
-  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

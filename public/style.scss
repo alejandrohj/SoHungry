@@ -1,37 +1,117 @@
-$primary-color: #4AD770;
-$secondary-color: #42E497;
+$primary-color: #55e9bc;
+$secondary-color: #55e9bc;
 $edit-color: #E4BF42;
-$tertiary-color: #4267E4;
+$tertiary-color: #BC55E9;
 $warning-color: #F50D22;
 $backgroung-color: #F0EAEB;
 $btn-add: #39c926;
 
-
+//General tag styles
 body{
     background-color: $backgroung-color;
     font-family: Montserrat, sans-serif;
 }
+
+a{
+    color: $tertiary-color;
+   }
+
+h4{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+hr{
+    border: 3px dashed $tertiary-color;
+    background-color: $primary-color;
+}
+
+//Overriding general bootstrap classes
+
+.btn-primary{
+    background-color: $tertiary-color;
+    border-color: $tertiary-color;
+    &:hover{
+        background-color: $primary-color;
+        border-color: $primary-color;
+    }
+    &:active{
+        background-color: $primary-color;
+        border-color: $primary-color;
+    }
+    &:focus{
+        background-color: $primary-color;
+        border-color: $primary-color;
+    }
+}
+
+
+//Login and register page styles
+
+.sign-form{
+    margin: 30% 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logo{
+        width: 100px;
+        height: 100px;
+        margin-bottom: 50px;
+    }
+    .input-group-prepend{
+        width: 105px;
+        .input-group-text{
+            background-color: $secondary-color;
+            width: inherit;
+        }
+    }
+    .choose-type{
+        width:100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .log-btn{
+        margin:30px;
+    }
+    .login-error{
+        text-align: center;
+    }
+}
+
+//Navbar styles
+#navbar-hungry{
+    background-image: linear-gradient(135deg, #BC55E9, #55e9bc);
+    color: $backgroung-color;
+    .navbar-toggler{
+        background-color: transparent;
+    }
+    .nav-link{
+        color: $backgroung-color;
+    }
+    .btn-logOut{
+        list-style: none;
+        color: $tertiary-color;
+        font-style: oblique;
+    }
+    .nav-item{
+        margin: auto 10px;
+    }
+    .logout-container{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .navbar-title{
+        font-size: 1.5em;
+    }
+}
+
 #inputState {
     margin-left: 10px;
 }
 .addDishForm {
     margin-left: 20px;
 }
-#navbar-hungry{
-    background-color: $tertiary-color;
-    color: $backgroung-color;
-}
-.navbar-toggler{
-    background-color: $primary-color;
-}
-.navbar-light .navbar-nav .nav-link{
-    color: $backgroung-color;
-}
-#btn-logOut{
-    list-style: none;
-    color: $backgroung-color;
-    font-style: oblique;
-}
+
 .logoSection{
     margin: 20px 5px;
     display: flex;
@@ -39,28 +119,24 @@ body{
     align-items: center;
     border-bottom: 2px solid $secondary-color;
 }
-.card-section{
-    margin: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid $secondary-color;
-}
+
 .myRestaurant-all{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .card-section{
+        margin: 20px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid $secondary-color;
+        .card{
+            width: 18rem;
+        }
+    }
 }
-.btn-primary{
-    background-color: $tertiary-color;
-}
-.sign-form{
-    margin: 50% 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .basicInfo-form{
     margin: auto 30px;
     display: flex;
@@ -87,20 +163,9 @@ body{
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
-.choose-type{
-    width:100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-.log-btn{
-    margin:30px;
-}
-.input-group-text{
-    background-color: $secondary-color;
-}
-a{
- color: $tertiary-color;
-}
+
+
+
 .addNewDish{
     display: flex;
     flex-wrap: wrap;
@@ -128,10 +193,7 @@ a{
     align-items: center;
     flex-wrap: wrap;
 }
-h4{
-    margin-left: 30px;
-    margin-top: 10px;
-}
+
 
 .btn{
     color: $backgroung-color
@@ -162,10 +224,7 @@ h4{
     width: 100% !important;
     margin: 10px;
 }
-hr{
-    border: 3px dashed $tertiary-color;
-    background-color: $primary-color;
-}
+
 .card-search{
     display:flex;
     flex-direction: row;
@@ -273,6 +332,8 @@ hr{
     font-size: 0.7em;
 }
 
+
+
 #qrcode{
     width: 200px;
     height: 200px;
@@ -312,6 +373,7 @@ hr{
 .category-menu-display{
     margin-right: 30px;
 }
+
 .card-pic{
     width: 100%;
     height: 100%;
@@ -323,17 +385,16 @@ hr{
     align-items: center;
     margin-bottom: 30px;
 }
-#logo{
-    width: 100px;
-    height: 100px;
-    margin-bottom: 50px;
-}
+
+
+
 #login-header{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
 }
+
 #app-title{
     display:flex;
     flex-direction: column;
@@ -344,7 +405,6 @@ hr{
     width: 80%;
 }
 
-
 #photo-image{
     width:80%;
 }
@@ -353,89 +413,6 @@ hr{
     width: 60%;
 }
 
-@media (min-width: 900px){
-
-    .sign-form{
-        margin:100px 50px;
-    }
-    .card-search{
-        width: 45%;
-    }
-    .searchMatches{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .order-container{
-        display:flex;
-        flex-wrap: wrap;
-        margin-left: 10px;
-    }
-    .order-buttons{
-        display: none;
-    }
-    .quantity{
-        width: 30px;
-    }
-    .card-body-search{
-        width:300px;
-    }
-    .sign-form .input-group{
-        align-items: inherit;
-        width: 50%;
-    }
-    .sign-form .input-group .form-control{
-        flex: 1 1;
-    }
-    .logoSection .form_controls{
-        width: 60%;
-    }
-    .card-myorders{
-        width: 30%;
-        margin: 10px 10px;
-    }
-}
-.table-orders-restaurant{
-    margin-left: 150px;
-    font-size: 1.3rem;
-}
-.form-user-order{
-    margin-left: 10px;
-}
-#user-order-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 5px;
-}
-.card .order-dish-data{
-    margin: 5px;
-}
-.card .order-dish-data h5{
-    text-align:center;
-}
-.border-btm{
-    border-bottom: 1px solid $primary-color;
-}
-.btn-green{
-    background-color: $btn-add;
-    border: none;
-    margin-right: 10px;
-}
-.card-order-user{
-    background-color: $tertiary-color;
-    color: $backgroung-color;
-}
-.card-img-top{
-    padding: 5px;
-    border-radius: 6px;
-}
-.description{
-    p{
-
-        margin: 2px auto 2px auto;
-    }
-}
 .quantity-and-subtotal{
     margin-top: 5px;
 }
@@ -462,19 +439,133 @@ hr{
 .category-title span{
     margin-left: 5px;
 }
+
 #order-total{
     width: 30px;
 }
+
 .hr-categories{
     border: 2px solid $primary-color;
     margin: 40px 0px;
 }
+
 .orders-container{
     display: flex;
     flex-wrap: wrap;
 }
+
 .orders-container hr{
     display:none;
+}
+
+.table-orders-restaurant{
+    margin-left: 150px;
+    font-size: 1.3rem;
+}
+
+.form-user-order{
+    margin-left: 10px;
+}
+
+#user-order-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.card {
+    .order-dish-data{
+        margin: 5px;
+        h5{
+            text-align:center;
+        }
+    }
+}
+
+.border-btm{
+    border-bottom: 1px solid $primary-color;
+}
+
+.btn-green{
+    background-color: $btn-add;
+    border: none;
+    margin-right: 10px;
+}
+
+.card-order-user{
+    background-color: $tertiary-color;
+    color: $backgroung-color;
+}
+
+.card-img-top{
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.description{
+    p{
+
+        margin: 2px auto 2px auto;
+    }
+}
+
+@media (min-width: 900px){
+    //Sign form styles for desktop
+    .sign-form{
+        margin:100px 50px;
+        .input-group{
+            align-items: inherit;
+            width: 50%;
+            .form-control{
+                flex: 1 1;
+            }
+        }
+    } 
+    //Navbar adjustment for desktop
+    .navbar-title{
+        margin: auto 15px;
+    }
+
+
+    .card-search{
+        width: 45%;
+    }
+
+    .searchMatches{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .order-container{
+        display:flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+    }
+
+    .order-buttons{
+        display: none;
+    }
+
+    .quantity{
+        width: 30px;
+    }
+
+    .card-body-search{
+        width:300px;
+    }
+
+    .logoSection {
+        .form_controls{
+        width: 60%;
+        }
+    }
+
+    .card-myorders{
+        width: 30%;
+        margin: 10px 10px;
+    }
 }
 
 

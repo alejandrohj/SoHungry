@@ -1,7 +1,7 @@
 <form action="/login" method="post" class='sign-form'>
 
 <header id='login-header'>
-    <img src="images/logo.png" alt="" srcset="" id='logo'>
+    <img src="images/logo.png" alt="" srcset="" class='logo'>
     <div id='app-title'>
         <h2>We are So Hungry!</h2>
         <h5>Log in</h5>
@@ -38,7 +38,7 @@
 <button type="submit" class="btn btn-primary log-btn">Log in</button>
 <a href="/signup">Register now</a>
 {{#if errorMessage}}
-<div>{{errorMessage}}</div>
+<div class='login-error'>{{errorMessage}}</div>
 {{/if}}
 </form>
 
