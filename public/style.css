@@ -17,6 +17,10 @@ hr {
   background-color: #55e9bc;
 }
 
+.btn {
+  color: #F0EAEB;
+}
+
 .btn-primary {
   background-color: #BC55E9;
   border-color: #BC55E9;
@@ -95,6 +99,12 @@ hr {
   flex-direction: column;
   justify-content: center;
 }
+.myRestaurant-all .basicInfo-form {
+  margin: auto 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .myRestaurant-all .card-section {
   margin: 20px 30px;
   display: flex;
@@ -127,6 +137,7 @@ hr {
 }
 .myRestaurant-all .card-section .logoSection #backend_upload #photo_image {
   width: 250px;
+  margin: 20px auto;
 }
 .myRestaurant-all .input-group-prepend {
   width: 121px;
@@ -136,43 +147,9 @@ hr {
   width: inherit;
 }
 
-#inputState {
-  margin-left: 10px;
-}
-
-.addDishForm {
-  margin-left: 20px;
-}
-
-.basicInfo-form {
-  margin: auto 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.addDishForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.imgSection {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.imgSection img {
-  margin: auto 30px;
-}
-
-.imgSection {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
+.new-dish-title {
+  text-align: center;
+  margin: 10px 0;
 }
 
 .addNewDish {
@@ -184,6 +161,47 @@ hr {
   justify-content: center;
   align-items: center;
 }
+.addNewDish .addDishForm {
+  display: flex;
+  flex-direction: column;
+}
+.addNewDish .addDishForm .input-group-prepend {
+  width: 121px;
+}
+.addNewDish .addDishForm .input-group-prepend .input-group-text {
+  background-color: #55e9bc;
+  width: inherit;
+}
+.addNewDish .imgSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.addNewDish .imgSection .sectionItem {
+  margin: auto 30px;
+}
+.addNewDish .imgSection .imageToAdd {
+  margin: 5px;
+}
+.addNewDish .imgSection #backend_upload {
+  margin-bottom: 20px;
+}
+.addNewDish .imgSection #backend_upload .form_controls {
+  display: flex;
+  justify-content: center;
+}
+.addNewDish .imgSection #backend_upload .profile-upload-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 15px auto;
+}
+.addNewDish .imgSection #backend_upload #photo_image {
+  width: 250px;
+  margin: 20px auto;
+}
 
 .dishesInfo {
   margin-top: 20px;
@@ -193,21 +211,32 @@ hr {
   justify-content: center;
   flex-wrap: wrap;
 }
-
-.DishCard {
+.dishesInfo .DishCard {
   margin: 10px;
   align-items: center;
 }
-
-.dishForm {
+.dishesInfo .DishCard .dishForm {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
 }
-
-.btn {
-  color: #F0EAEB;
+.dishesInfo .DishCard .dishForm .input-group-prepend {
+  width: 121px;
+}
+.dishesInfo .DishCard .dishForm .input-group-prepend .input-group-text {
+  background-color: #55e9bc;
+  width: inherit;
+}
+.dishesInfo .DishCard .dishForm .dish-card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: auto;
+}
+.dishesInfo .DishCard .dish-card-photo {
+  display: flex;
+  align-items: center;
 }
 
 #searchForm {
@@ -319,10 +348,6 @@ hr {
   margin-left: 20px;
 }
 
-.sectionItem {
-  margin: auto 30px;
-}
-
 .image-container {
   width: 100px !important;
   height: 100px;
@@ -368,10 +393,6 @@ hr {
   display: flex;
   justify-content: center;
   margin-top: 200px;
-}
-
-.imageToAdd {
-  margin: 5px;
 }
 
 .myRestCardItems {

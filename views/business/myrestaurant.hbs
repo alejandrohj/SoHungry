@@ -1,34 +1,35 @@
 {{> restaurantNavBar this}}
 
 <article class="myRestaurant-all">
-    <section class="card-section">
+    <section class="card-section menu-photo-section">
         <div class="card">
-        <img src={{restaurant.logo}} width="50" height="250" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">{{restaurant.userName}}</h5>
-            <p class="card-text">{{restaurant.description}}</p>
-        </div>
-        <ul class="list-group list-group-flush myRestCardItems">
-            <li class="list-group-item">{{restaurant.cuisine}}</li>
-            <li class="list-group-item">{{restaurant.location.city}}</li>
-        </ul>
+            <img src={{restaurant.logo}} width="50" height="250" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{restaurant.userName}}</h5>
+                <p class="card-text">{{restaurant.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush myRestCardItems">
+                <li class="list-group-item">{{restaurant.cuisine}}</li>
+                <li class="list-group-item">{{restaurant.location.city}}</li>
+            </ul>
         </div>
         <div class="logoSection">
-        <h4>Edit profile picture</h4>
-        <div id='backend_upload'>
-        <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form profile-upload-input'>
-            <div class="form_controls choose-file">
-                <input id="photo_image" name="image" type="file" />
-                <input id="photo_image_cache" name="image_cache" type="hidden"/>
-            </div>
-            </div>
-            <div class="form_line">
-            <div class="form_controls">
-                <input name="commit" type="submit" value="Submit Photo" class="btn btn-primary log-btn" />
-            </div>
-            </div>
-            <input id="direct" name="direct" type="hidden" />
-        </form></div>
+            <h4>Edit profile picture</h4>
+            <form action="/photos/addLogo" enctype="multipart/form-data" method="post" class='basicInfo-form profile-upload-input'>
+                <div id='backend_upload'>
+                    <div class="form_controls choose-file">
+                        <input id="photo_image" name="image" type="file" />
+                        <input id="photo_image_cache" name="image_cache" type="hidden"/>
+                    </div>
+                </div>
+                <div class="form_line">
+                    <div class="form_controls">
+                        <input name="commit" type="submit" value="Submit Photo" class="btn btn-primary log-btn" />
+                    </div>
+                </div>
+                <input id="direct" name="direct" type="hidden" />
+            </form>
+        </div>
     </div>
     </section>
     

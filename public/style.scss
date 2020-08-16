@@ -26,6 +26,11 @@ hr{
     background-color: $primary-color;
 }
 
+//Other general styles
+.btn{
+    color: $backgroung-color
+}
+
 //Overriding general bootstrap classes
 
 .btn-primary{
@@ -107,14 +112,16 @@ hr{
 
 //Restaurant profile styles
 
-
-
-
-
 .myRestaurant-all{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .basicInfo-form{
+        margin: auto 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .card-section{
         margin: 20px 30px;
         display: flex;
@@ -146,6 +153,7 @@ hr{
                 }
                 #photo_image{
                     width: 250px;
+                    margin: 20px auto;
                 }
             }
         }
@@ -159,43 +167,12 @@ hr{
     }
     
 }
+// Menu section styles
 
-
-#inputState {
-    margin-left: 10px;
+.new-dish-title{
+    text-align: center;
+    margin: 10px 0;
 }
-.addDishForm {
-    margin-left: 20px;
-}
-.basicInfo-form{
-    margin: auto 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.addDishForm{
-    display: flex;
-    flex-direction: column;
-}
-.imgSection{
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.imgSection img{
-    margin: auto 30px;
-}
-.imgSection{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-
-
-
 .addNewDish{
     display: flex;
     flex-wrap: wrap;
@@ -204,6 +181,47 @@ hr{
     padding-bottom: 20px;
     justify-content: center;
     align-items: center;
+    .addDishForm {
+        display: flex;
+        flex-direction: column;
+        .input-group-prepend{
+            width: 121px;
+            .input-group-text{
+                background-color: $secondary-color;
+                width: inherit;
+            }
+        }
+    }
+    .imgSection{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .sectionItem{
+            margin: auto 30px;
+        }
+        .imageToAdd{
+            margin: 5px;
+        }
+        #backend_upload{
+            margin-bottom: 20px;
+            .form_controls{
+                display: flex;
+                justify-content: center;
+            }
+            .profile-upload-input{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                margin: 15px auto;
+            }
+            #photo_image{
+                width: 250px;
+                margin: 20px auto;
+            }
+        }
+    }
 }
 .dishesInfo{
     margin-top: 20px;
@@ -212,22 +230,40 @@ hr{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-}
-.DishCard{
-    margin: 10px;
-    align-items: center;
-}
-.dishForm{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
+    .DishCard{
+        margin: 10px;
+        align-items: center;
+        .dishForm{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            .input-group-prepend{
+                width: 121px;
+                .input-group-text{
+                    background-color: $secondary-color;
+                    width: inherit;
+                }
+            }
+            .dish-card-buttons{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: auto;
+            }
+        }
+        .dish-card-photo{
+            display: flex;
+            align-items: center;
+        }
+    }
 }
 
 
-.btn{
-    color: $backgroung-color
-}
+
+
+
+
 #searchForm{
     width: 90%;
     display: flex;
@@ -324,9 +360,7 @@ hr{
 .mymenuEdit{
     margin-left: 20px;
 }
-.sectionItem{
-    margin: auto 30px;
-}
+
 .image-container{
     width: 100px !important;
     height: 100px;
@@ -375,9 +409,7 @@ hr{
     margin-top: 200px;
 }
 
-.imageToAdd{
-    margin: 5px;
-}
+
 
 .myRestCardItems{
     text-align: center;
@@ -652,7 +684,6 @@ hr{
         }
     }
 
-
     .card-search{
         width: 45%;
     }
@@ -691,6 +722,3 @@ hr{
         margin: 10px 10px;
     }
 }
-
-
-

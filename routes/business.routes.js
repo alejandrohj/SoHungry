@@ -6,6 +6,7 @@ const DishModel = require('../models/dish.model');
 const OrderModel = require('../models/order.model');
 const QRCode = require('qrcode');
 const session = require('express-session');
+const { path } = require('../app');
 
 
 //Set private routes for the business side
@@ -28,11 +29,11 @@ router.get('/',(req,res)=>{
 
 //Page for filling the restaurant menu
 router.get('/menu',(req,res)=>{
-    let temporalImg;
+    let temporalImg = '../../public/images/emptydish.png'
+    console.log (req.session.dishPhoto)
     if(req.session.dishPhoto){
         temporalImg = req.session.dishPhoto;
     }
-    console.log('temporal img:',req.session.dishPhoto)
     BusinessModel.findById({_id:req.session.loggedInUser._id})
         .populate({
             path:'menu'
